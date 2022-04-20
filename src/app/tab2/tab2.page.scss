@@ -1,0 +1,45 @@
+ion-header{
+    ion-toolbar{
+        ion-title{
+                background-color: rgb(29, 29, 170); 
+                height: 100px;
+                border-radius: 0 0 15% 15%;
+                .header{
+    
+                    display: flex;
+                    color: white;
+                    justify-content: space-around;
+                    img{
+                        width: 60px;
+                        height: 30px;
+                        border-radius: 30% 30% 30% 30%; 
+                        flex: 2;
+                    }
+                    h2{
+                        font-size: 1.3rem;
+                        flex: 1;
+                        margin: 10px;
+                    }
+                }
+                ion-icon{
+                    color: white;
+                    // width: 30px;
+                    // height: 30px;
+                    flex: 1;
+                }
+                
+        }
+    }
+}
+
+ion-content{
+    .card-content{
+        .row{
+            display: flex;
+        }
+        ion-card-content{
+            background-color: rgb(34, 34, 125);
+            color: white;
+        }
+    }
+}
