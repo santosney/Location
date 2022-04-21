@@ -1,17 +1,25 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { FactureComponent } from './components/facture/facture.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tabNavigation',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  
+  {
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'forgetPassword',
+    component: ForgetPasswordComponent,
+  }
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, )
   ],
   exports: [RouterModule]
 })

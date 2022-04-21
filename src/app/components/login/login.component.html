@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h1>Hello! Login</h1>
+  </div>
+  <ion-card>
+    <ion-card-content>
+      <form action="">
+        <ion-item>
+          <ion-label position="floating">Username</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+
+        <ion-button (click)="Submit()" expand="block" routerLink="tabNavigation">Connexion</ion-button>
+        <!-- <br> -->
+        <a routerLink="forgetPassword">Mot de passe oublier</a>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</div>
