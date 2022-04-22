@@ -3,7 +3,7 @@
     <ion-title>
       <div class="header">
           <img src="../../assets/images/N.jpg" alt="profil" class="profil">
-          <h2 class="title">Mon tableau de bord</h2>
+          <h2 class="title"><strong>Mon tableau de bord</strong></h2>
           <ion-icon name="notifications-outline"></ion-icon>
           <ion-icon name="mail-unread-outline"></ion-icon>
       </div>
@@ -13,24 +13,27 @@
 
 <ion-content [fullscreen]="true">
     <div class="card-content">
+      <br><br>
       <div class="row">
         <ion-card class="card-one" (click)="checkService()" routerLink="Services">
           <ion-card-header>
-            <img src="../../assets/images/immeuble.jpg" alt="">
+            <img src="../../assets/images/immeuble.png" alt="">
           </ion-card-header>
         
           <ion-card-content>
-            IMMEUBLE
+            <br>
+            <strong>IMMEUBLE</strong>
           </ion-card-content>
         </ion-card>
 
         <ion-card class="card-two" (click)="checkService()" routerLink="Services">
           <ion-card-header>
-            <img src="../../assets/images/immeuble.jpg" alt="">
+            <img src="../../assets/images/immeuble.png" alt="">
           </ion-card-header>
         
           <ion-card-content>
-            MAISON
+            <br>
+            <strong>MAISON</strong>
           </ion-card-content>
         </ion-card>
       </div>
@@ -38,23 +41,30 @@
       <div class="row">
         <ion-card class="card-one" (click)="checkService()" routerLink="Services">
           <ion-card-header>
-            <img src="../../assets/images/immeuble.jpg" alt="">
+            <img src="../../assets/images/immeuble.png" alt="">
           </ion-card-header>
         
           <ion-card-content>
-            VILLA
+            <br>
+            <strong>VILLA</strong>
           </ion-card-content>
         </ion-card>
 
         <ion-card class="card-two" (click)="checkService()" routerLink="Services">
           <ion-card-header>
-            <img src="../../assets/images/immeuble.jpg" alt="">
+            <img src="../../assets/images/immeuble.png" alt="">
           </ion-card-header>
         
           <ion-card-content>
-            TERRAIN
+            <br>
+            <strong>TERRAIN</strong>
           </ion-card-content>
         </ion-card>
+      </div>
+      <br><br><br><br>
+      <div class="footer">
+        <img src="../../assets/images/footer-login.png" alt="">
       </div>
     </div>
+
 </ion-content>

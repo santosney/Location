@@ -2,20 +2,21 @@
   <ion-toolbar>
     <ion-title>
       <div class="header">
-          <img src="../../assets/images/N.jpg" alt="profil" class="profil">
-          <h2 class="title">Mon tableau de bord</h2>
-          <ion-icon name="notifications-outline"></ion-icon>
+          <img src="../../assets/images/N.jpg" alt="" class="profil">
+          <h2 class="title"><strong>{{service_title[0]}}</strong></h2>
+          <ion-icon name="notifications-outline" class="icon-notification"></ion-icon>
           <ion-icon name="mail-unread-outline"></ion-icon>
-      </div>
-      <ion-searchbar class="searchbar"></ion-searchbar>
+      </div>  
+      <ion-searchbar class="searchbar" placeholder="Search Properties, Area,etc..."></ion-searchbar>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-  <!-- card of sybservice -->
+  
+  <!-- card of subservice -->
     <div class="services">
+      <br><br>
       <div class="row" >
         <ion-card class="item-card" routerLink="DetailFacture" (click)="checkFacture()">
           <ion-card-content class="content-card">
@@ -26,6 +27,7 @@
 
               <div class="text-content">
                 <h2> <strong> Immeuble de la cité</strong> </h2>
+                  <!-- <p>description de l'immeuble</p> -->
               </div>
 
               <div class="price">

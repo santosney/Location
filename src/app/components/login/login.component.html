@@ -1,12 +1,16 @@
 <div class="container">
-  <div class="row">
-    <h1>Hello! Login</h1>
-  </div>
-  <ion-card>
-    <ion-card-content>
+    <div class="row">
+      <img src="../../../assets/images/logo.png" alt="">
+      <br>
+      <img src="../../../assets/images/connexion_tb.png" alt="">
+    </div>
+    
+   <!-- <div class="login-select"></div> -->
+   <div class="content">
+    <div class="login-form">
       <form action="">
         <ion-item>
-          <ion-label position="floating">Username</ion-label>
+          <ion-label position="floating">Email address</ion-label>
           <ion-input type="text"></ion-input>
         </ion-item>
         
@@ -14,11 +18,20 @@
           <ion-label position="floating">Password</ion-label>
           <ion-input type="password"></ion-input>
         </ion-item>
+        <br>
 
-        <ion-button (click)="Submit()" expand="block" routerLink="tabNavigation">Connexion</ion-button>
+        <ion-button (click)="Submit()" expand="block" routerLink="forgetPassword">LOGIN</ion-button>
         <!-- <br> -->
-        <a routerLink="forgetPassword">Mot de passe oublier</a>
-      </form>
-    </ion-card-content>
-  </ion-card>
+        <a routerLink="forgetPassword">Forgot password ?</a>
+
+      </form> 
+    </div>
+   </div>
+
+    <br><br>
+
+    <div class="row-lg">
+      <img src="../../../assets/images/footer-login.png" alt="">
+    </div>
+
 </div>

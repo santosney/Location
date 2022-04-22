@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Tab2Page } from './tab2.page';
 import { ServiceComponent } from '../components/service/service.component';
-import { FactureComponent } from '../components/facture/facture.component';
 
 const routes: Routes = [
   {
@@ -13,10 +12,7 @@ const routes: Routes = [
     path: 'Services',
     component: ServiceComponent,
   },
-  {
-    path: 'DetailFacture',
-    component: FactureComponent,
-  }
+ 
 ];
 
 @NgModule({
