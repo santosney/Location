@@ -2,3 +2,11 @@
     background-color: rgb(52, 52, 174);
     color: white;
 }
+ion-tabs{
+    --border-radius: 10px 10px 10px 10px;
+}
+ion-tab-bar{
+    // --border: 1px groove red;
+    --background: #2A3088;
+    --color: white;
+}

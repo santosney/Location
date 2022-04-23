@@ -1,22 +1,33 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
+
 
 const routes: Routes = [
+  // {
+  //   path: 'tabNavigation',
+  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  // },
+ 
   {
-    path: 'tabNavigation',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    path: 'wellcom',
+    loadChildren: () => import('./pages/wellcom/wellcom.module').then( m => m.WellcomPageModule)
   },
+
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+
+  {
+    path: 'properties',
+    loadChildren: () => import('./pages/properties/properties.module').then( m => m.PropertiesPageModule)
+  },
+
   {
     path: '',
-    component: HomeComponent
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
-  {
-    path: 'forgetPassword',
-    component: ForgetPasswordComponent,
-  }
 ];
 @NgModule({
   imports: [

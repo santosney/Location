@@ -2,6 +2,9 @@
   <ion-toolbar>
     <ion-title>
       <div class="header">
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="properties" ></ion-back-button>
+        </ion-buttons>
           <img src="../../assets/images/N.jpg" alt="" class="profil">
           <h2 class="title"><strong>{{service_title[0]}}</strong></h2>
           <ion-icon name="notifications-outline" class="icon-notification"></ion-icon>
@@ -18,7 +21,7 @@
     <div class="services">
       <br><br>
       <div class="row" >
-        <ion-card class="item-card" routerLink="DetailFacture" (click)="checkFacture()">
+        <ion-card class="item-card" routerLink="properties-detail" (click)="checkFacture()">
           <ion-card-content class="content-card">
 
               <div class="img">
