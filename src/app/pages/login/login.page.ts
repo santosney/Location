@@ -20,6 +20,6 @@ export class LoginPage implements OnInit {
   Login(form: NgForm){
     const data_user = form.value;
     console.log(data_user);
-    this.Route.navigate(['properties']);
+    this.Route.navigate(['home']);
   }
 }

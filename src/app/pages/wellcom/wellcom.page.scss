@@ -1,0 +1,39 @@
+ion-slide{
+    .containt{
+        position: absolute;
+        background-color: #2A3088;
+        margin-top: 210%;
+         .silde_content{
+          margin-top: 30%;
+         }
+         .slide_header{
+             margin-top: 25%;
+         }
+        h2{
+            color: white;
+            font-weight: bold;
+        }
+    }
+    
+}
+.content-slide{
+    position: absolute;
+    margin-top: 210%;
+    .image_one{
+        margin-top: -10%;
+    }
+    .image_two{
+        margin-top: 50%;
+    }
+
+    .image_tree{
+        margin-top: -28%;
+        background-color: #2A3088;
+    }
+}
+.text-slide{
+    color: white;
+    position: absolute;
+    margin-top: 350%;
+    text-align: center;
+}

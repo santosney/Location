@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./properties-detail.page.scss'],
 })
 export class PropertiesDetailPage implements OnInit {
-  service_title = ["IMMEULE", "MAISON","VILLA", "TERRAIN"];
+  peoperties_name= ["IMMEULE_LV1", "IMMEULE_LV2","IMMEULE_LV3", "IMMEULE_LV3"];
+  more_properties = [{}, {}, {}, {}, {}, {}, {}, {}]
   constructor() { }
 
   ngOnInit() {

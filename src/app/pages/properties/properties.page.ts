@@ -6,12 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./properties.page.scss'],
 })
 export class PropertiesPage implements OnInit {
-  subServices = ['immeuble', 'maison', 'villa', 'terrain'];
+  properties_title = "IMMEULE";
+  properties_details = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+
   constructor() { }
 
   ngOnInit() {
   }
-  checkService(){
-    console.log("service choisir");
+  checkFacture(){
+    console.log("check  a facture");
   }
 }

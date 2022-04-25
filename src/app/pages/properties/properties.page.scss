@@ -3,8 +3,7 @@ ion-header{
         border-radius: 0 0 20px 20px;
         ion-title{
             background-color: #2A3088; 
-           
-                height: 100px;
+                height: 150px;
                 
                 .header{
     
@@ -14,9 +13,10 @@ ion-header{
                     // padding-top: -10%;
                     text-align: center;
                     img{
-                        width: 100px;
+                        width: 50px;
                         height: 30px;
-                        border-radius: 35% 35% 35% 35%; 
+                        margin-top: 2%;
+                        border-radius: 20px; 
                         flex: 1;
                     }
                     h2{
@@ -24,14 +24,22 @@ ion-header{
                         flex: 1;
                         margin: 10px;
                         padding-left: 10%;
+                        margin-top: 2%;
+                    }
+                    .icon-notification{
+                        padding-left: 25%;
+                        
                     }
                 }
                 ion-icon{
                     color: white;
-                    // width: 30px;
-                    // height: 30px;
-                    flex: 1;
+                    flex: 1;    
                 }
+                ion-searchbar {
+                    input {
+                      border-radius: 30px !important;
+                    }
+                  }
                 
         }
         
@@ -39,25 +47,55 @@ ion-header{
 }
 
 ion-content{
-    .card-content{
-        background-color: #F6F6F6;
-        .row{
-            display: flex;
-           
-            padding-left: 10%;
-            ion-card{
-                background-color: #F5F5F5;
-                border-radius: 10px 10px 10px 10px;
-            }
-            img{
-                width: 100px;
+   .services{
+    background-color: #F6F6F6;
+   }
+}
+.item-card{
+    height: auto; 
+    background-color: white;
+    width: 100%;
+    .content-card{
+        display: flex;
+        text-align: center;
+        height: 150px;
+        img{
+            width: 100px;
+            height: 80%;
+            border-radius: 40px;
+            flex: 1;
+            padding-top: 20%;
+            margin-left: 5%;
+            padding-left: 2%;
+        }
+        .text-content{
+            color: rgb(140, 129, 129);
+            font-weight: bold;
+            flex: 2;
+            text-align: center;
+            margin-left: -10%;
+            h2{
+                color: black;
+                font-size: 1rem;
+                margin-left: -10%;
             }
         }
-        ion-card-content{
-            background-color: #2A3088;
-            color: white;
-            height: 60px;
-            text-align: center;
+        .text-content > ion-icon {
+            margin-left: -20%;
+        }
+        .price > span:last-child{
+            margin-left: -35%;
+        }
+        span{
+            margin-left: -20%;
+        }
+        
+    }
+    .location{
+        display: flex;
+        margin-left: 20%;
+        span{
+            margin-left: 5%;
         }
     }
 }

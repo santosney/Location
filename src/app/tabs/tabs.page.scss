@@ -3,10 +3,15 @@
     color: white;
 }
 ion-tabs{
-    --border-radius: 10px 10px 10px 10px;
+    --border-radius: 20px;
+      border-radius: 0 0 20px 20px;
 }
 ion-tab-bar{
     // --border: 1px groove red;
     --background: #2A3088;
     --color: white;
+    --border-radius: 20px;
+}
+.tabs{
+    border-radius: 30px;
 }

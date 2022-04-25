@@ -7,7 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage
-  }
+  },
+
+  {
+    path: 'properties',
+    loadChildren: () => import('../../pages/properties/properties.module').then( m => m.PropertiesPageModule)
+  },
 ];
 
 @NgModule({

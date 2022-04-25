@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wellcom.page.scss'],
 })
 export class WellcomPage implements OnInit {
-
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
   constructor() { }
 
   ngOnInit() {

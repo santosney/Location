@@ -16,7 +16,7 @@ ion-header{
                         width: 50px;
                         height: 30px;
                         margin-top: 2%;
-                        border-radius: 35% 35% 35% 35%; 
+                        border-radius: 20px; 
                         flex: 1;
                     }
                     h2{
@@ -25,6 +25,7 @@ ion-header{
                         margin: 10px;
                         padding-left: 10%;
                         margin-top: 2%;
+                        width: auto;
                     }
                     .icon-notification{
                         padding-left: 25%;
@@ -33,7 +34,9 @@ ion-header{
                 }
                 ion-icon{
                     color: white;
-                    flex: 1;    
+                    flex: 1;
+                    margin-top: 2%;  
+                    // margin-left: -8%; 
                 }
                 ion-searchbar {
                     input {
@@ -45,30 +48,85 @@ ion-header{
         
     }
 }
-
-ion-content{
-   .services{
+.content-detail{
     background-color: #F6F6F6;
-   }
-}
-.item-card{
-    height: 80px; 
-    .content-card{
-        display: flex;
-        text-align: center;
-        img{
-            width: 60px;
-            height: 100%;
-            flex: 1;
+    .row-lg{
+        background-color: white;
+        margin-top: 0%;
+        height: auto;
+        // border: inset white;
+        .line_one{
+            display: flex;
+            h2{
+                color: #827171;
+                font-size: 0.8rem;
+            }
         }
-        .text-content{
-            color: black;
-            font-weight: bold;
-            flex: 2;
-            text-align: center;
+        .line_one > h2:first-child{
+            margin-left: 5%;
         }
-        .price{
-            flex: 1;
+        .line_one > h2:last-child {
+            margin-left: 22%;
+        }
+        .line_two{
+            display: flex;
+            margin-top: -5%;
+        }
+        .line_two > h1:first-child{
+            color: rgb(160, 238, 43);
+            padding-left: 2%;
+        }
+        .line_two > h1:last-child{
+            margin-left: 8%;
+            color: red;
+        }
+        .row-ld > .line_one > h1{
+            color: rgb(167, 241, 57);
+            margin-top: 10%;
+            margin-left: -25%;
         }
     }
+
+    .row-information{
+        background-color: white;
+        height: auto;
+        width: 100%;
+        padding-left: 10px;
+        .line_one{
+            display: flex;
+           h4{
+               font-size: 0.8rem;
+           }
+        }
+        .line_one > p {
+            margin-left: 50%;
+            margin-top: 4.5%;
+            color: #827171;
+        }
+        .line_two{
+            display: flex;
+            margin-top: -8%;
+            h3{
+                font-size: 1rem;
+                color: #827171;
+            }
+            p{
+                margin-left: 20%;
+                color: rgb(167, 241, 57);
+            }
+        }
+        .details{
+            p{
+                margin-top: -3%;
+            }
+        }
+        .details > p:first-child{
+            color: #827171;
+        }
+        .details > p:last-child{
+            color: rgb(44, 44, 167);
+        }
+       
+    }
+    
 }
