@@ -8,7 +8,7 @@ const routes: Routes = [
   // },
  
   {
-    path: 'wellcom',
+    path: '',
     loadChildren: () => import('./pages/wellcom/wellcom.module').then( m => m.WellcomPageModule)
   },
 
@@ -16,18 +16,16 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
-
   {
     path: 'properties',
     loadChildren: () => import('./pages/properties/properties.module').then( m => m.PropertiesPageModule)
   },
-
   {
-    path: 'tabs',
+    path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: '',
+    path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {

@@ -1,6 +1,8 @@
 .login-form{
     margin-top: 20%;
     padding: 5%;
+    border: 1px outset;
+    border-radius:0 0 30px 30px;
 }
 .row{
     text-align: center;
@@ -26,4 +28,29 @@ a{
 }
 ion-button{
     --background-color: #2A3088;
+}
+ion-progress-bar{
+    --progress-background: #2A3088;
+    --background: #F6F6F6;
+}
+.form-header{
+    height: 50px;
+    width: 100%;
+    border: 1px groove;
+    border-radius: 30px 30px 0 0;
+    background-color: #2A3088;
+    margin-top: -11%;
+    position: absolute;
+    display: flex;
+    color: white;
+    font-size: 0.8rem;
+}
+.form-header > h2:last-child{
+    margin-left: 10%;
+}
+.form-header > h2:first-child{
+    margin-left: 10%;
+}
+.form-header > h2:nth-child(2){
+    margin-left: 10%;
 }
