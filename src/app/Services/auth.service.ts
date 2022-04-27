@@ -24,7 +24,8 @@ export class AuthService {
 constructor(
         private httpService: HttpService,
         private storageService: StorageService,
-        private router: Router,private toastService: ToastService
+        private router: Router,
+        private toastService: ToastService,
         ) {
           this.loadToken();
         }
@@ -70,11 +71,6 @@ constructor(
 
       getUser() {
        return  this.storageService.get("user-login");
-        // .then(res => {
-        //   console.log("-----getUser -----  ",res)
-        //   this.data = res;
-        // });
-        // return this.data;
       }
 
   login(postData: any): Observable<any> {
@@ -84,12 +80,15 @@ constructor(
     return this.httpService.post('api/authen/', {"jsonrpc":"2.0","params":postData}).pipe(
       catchError(err => {
         this.getUser().then((user) => {
-          if (postData.login === user.login && postData.password === user.password) {
-            this.storageService.store("user",user.id).then();
-            // this.router.navigate(['/home']);
+          console.log("--------------Status------:", user.status);
+          if (postData.email === user.email && postData.password === user.password) {
+            if(postData.partner_type === user.partner_type){
+              this.storageService.store("user",user.user).then();
+              this.router.navigate(['home']);
             window.location.reload();
+            }
           }else {
-            this.toastService.presentToast("Login ou mot de passe incorrect !!");
+            this.toastService.presentToast(user.message);
             return;
           }
         })

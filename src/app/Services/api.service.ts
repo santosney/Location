@@ -33,12 +33,11 @@ export class ApiService {
   getAllData(uid): Observable<any[]> {
       // Return real API data and store it locally
       return this.http.post<any[]>(API_URL_,{"jsonrpc":"2.0","params":{"uid":uid}}).pipe(
-        map(res => res['result']),
+        map(res => res['data']),
         tap(res => {
           console.log("operateurs service--------  ",res);
           // this.setLocalData('res', res);
-          this.setLocalData('data', res['gear'])
-            
+          this.setLocalData('data', res['data'])
         })
       )
   }

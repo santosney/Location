@@ -10,7 +10,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'properties',
+    path: 'properties/:categ_id',
     loadChildren: () => import('../../pages/properties/properties.module').then( m => m.PropertiesPageModule)
   },
 ];

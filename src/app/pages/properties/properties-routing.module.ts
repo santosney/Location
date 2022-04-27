@@ -9,7 +9,7 @@ const routes: Routes = [
     component: PropertiesPage,
   },
   {
-    path: 'properties-detail',
+    path: 'properties-detail/:id',
     loadChildren: () => import('../../pages/properties-detail/properties-detail.module').then( m => m.PropertiesDetailPageModule)
   }
 ];

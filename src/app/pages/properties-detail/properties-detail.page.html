@@ -6,7 +6,7 @@
           <ion-back-button defaultHref="properties" ></ion-back-button>
         </ion-buttons>
           <img src="../../assets/images/N.jpg" alt="" class="profil">
-          <h2 class="title"><strong>{{peoperties_name[0]}}</strong></h2>
+          <h2 class="title"><strong>{{more_properties.name}}</strong></h2>
           <ion-icon name="notifications-outline" class="icon-notification"></ion-icon>
           <ion-icon name="mail-unread-outline"></ion-icon>
       </div>  
@@ -55,7 +55,7 @@
               </p>
             </div>
             <div class="line_two">
-              <h3>From _debut to _fin</h3>
+              <h3>{{more_properties.start}} {{more_properties.end}}</h3>
               <p><strong>500, 0000XAF</strong></p>
             </div>
         </div>
