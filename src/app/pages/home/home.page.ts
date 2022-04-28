@@ -18,8 +18,8 @@ export class HomePage implements OnInit {
     speed: 400
   };
   constructor(
-    public apiService: ApiService,
-    public authentificationService: AuthService,
+    public api: ApiService,
+    public authen: AuthService,
   ) { }
 
   ngOnInit() {
@@ -27,12 +27,12 @@ export class HomePage implements OnInit {
   }
 
   selectCategory(){
-      this.authentificationService.getUser().then((res) => {
-        this.uid = res['id'];
+      this.authen.getUser().then((res: any) => {
+        this.uid = res.id;
       });
-      this.apiService.getAllData(this.uid).subscribe((data) => {
-        this.data_landlord = data;
-      });
+      this.api.getLocalData1('data').subscribe((data) => {
+        this.category.push(data.category);
+      })
 
       this.category = this.data_landlord.category;
   }

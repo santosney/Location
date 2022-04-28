@@ -13,30 +13,29 @@ export class PropertiesDetailPage implements OnInit {
   uid: any;
   id: any;
  
-  more_properties = {};
+  more_properties : [any];
 
   constructor(
-    public apiService: ApiService,
-    public authentificationService: AuthService,
-    public router: ActivatedRoute,
+    public api: ApiService,
+    public authen: AuthService,
+    public route: ActivatedRoute,
   ) 
   { 
-    this.id = this.router.queryParams.subscribe((params) => {
+    this.id = this.route.queryParams.subscribe((params) => {
       this.id = params['id'];
     });
   }
 
   ngOnInit() {
+    this.SelectPropertiesDetails();
   }
 
   SelectPropertiesDetails(){
-    this.authentificationService.getUser().then((res) => {
-    this.uid = res['id'];
-    this.apiService.getAllData(this.uid).subscribe((data: any) => {
-      if (this.id === data.properties.id){
-        this.more_properties = data.properties.lease_detail;
-      }
-    });
+    this.api.getLocalData1('Data').subscribe((res) => {
+    if(this.id === res.properties.id){
+      this.more_properties = res.properties.lease_detail;
+    }
+    
     });
   }
   checkFacture(){

@@ -9,6 +9,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import {Network} from '@ionic-native/network/ngx';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,16 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
   ],
 
   providers: [
+    Network,
     {
        provide: RouteReuseStrategy, 
-       useClass: IonicRouteStrategy 
+       useClass: IonicRouteStrategy ,
+       
     }
     ],
   bootstrap: [AppComponent],

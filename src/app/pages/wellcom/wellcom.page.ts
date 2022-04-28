@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Slides } from 'ionic-angular';
+import {IonSlide} from '@ionic/angular';
+// import { Slides } from 'ionic-angular';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-wellcom',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./wellcom.page.scss'],
 })
 export class WellcomPage implements OnInit {
-  @ViewChild(Slides) slides: Slides;
+  // @ViewChild(Slides) slides: Slides;
   slideOpts = {
     initialSlide: 0,
     speed: 400
@@ -27,9 +28,9 @@ export class WellcomPage implements OnInit {
     //     this.router.navigate(['login']);
     //   }
     // })
-    if (this.slides.isEnd()) {
-      this.router.navigate(['login']);
-    }
+    // if (this.slides.isEnd()) {
+    //   this.router.navigate(['login']);
+    // }
   }
 
 }

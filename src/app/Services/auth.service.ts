@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap, map} from 'rxjs/operators';
 import { HttpService } from './http.service';
-import { IonLoaderService } from './ion-loader.service';
 import { StorageService } from './storage.service';
 import { ToastService } from './toast.service';
-
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  parthnerUrl = ['/api/get/landlord_info', '/api/get/tenant_info'];
   userData$ = new BehaviorSubject<any>([]);
   isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
 
@@ -26,6 +26,7 @@ constructor(
         private storageService: StorageService,
         private router: Router,
         private toastService: ToastService,
+        private api: ApiService,
         ) {
           this.loadToken();
         }
@@ -78,23 +79,28 @@ constructor(
     console.log("---------------------------",{"jsonrpc":"2.0","params":postData})
     
     return this.httpService.post('api/authen/', {"jsonrpc":"2.0","params":postData}).pipe(
-      catchError(err => {
-        this.getUser().then((user) => {
-          console.log("--------------Status------:", user.status);
-          if (postData.email === user.email && postData.password === user.password) {
-            if(postData.partner_type === user.partner_type){
-              this.storageService.store("user",user.user).then();
-              this.router.navigate(['home']);
-            window.location.reload();
-            }
-          }else {
-            this.toastService.presentToast(user.message);
-            return;
+     map(res => res['error']),
+     tap(res => {
+        console.log('-------------------Data login:', res);
+        if(res['code'] === 200){
+          const user = {'id': res['code'], 'email': postData.email, 'password': postData.password, 'partner_type': res['data'].message};
+          if(postData.partner_type === "tenant"){
+            this.api.getAllData(user.id, this.parthnerUrl[1]).subscribe((data) => {
+                this.storageService.store('data_tenant', data['data']);
+            });
+          }else if (postData.partner_type === "landlord"){
+             this.api.getAllData(user.id, this.parthnerUrl[0]).subscribe((data) => {
+               this.storageService.store('Data', data['data']);
+             });
           }
-        })
-        
-        throw new Error("Erreur serveur");
-      })
+          console.log('----------------User data format', user);
+          this.storageService.store('user-login', user).then();
+
+          this.toastService.presentToast('Session ouverte !');
+        }else {
+          this.toastService.presentToast(res.message);
+        }
+     })
     );
   }
 

@@ -39,6 +39,11 @@ ion-header{
 }
 
 ion-content{
+    --overflow:hidden;
+    overflow:auto;
+    &::-webkit-scrollbar{
+        display: none;
+    }
     .card-content{
         background-color: #F6F6F6;
         .row{
@@ -61,3 +66,4 @@ ion-content{
         }
     }
 }
+

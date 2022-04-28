@@ -1,14 +1,14 @@
 ion-slide{
     .containt{
         position: absolute;
-        background-color: #2A3088;
+        // background-color: #2A3088;
         margin-top: 210%;
         height: auto;
          .silde_content{
           margin-top: 30%;
          }
          .slide_header{
-             margin-top: 25%;
+             margin-top: -30%;
          }
         h2{
             color: white;
@@ -37,4 +37,12 @@ ion-slide{
     position: absolute;
     margin-top: 350%;
     text-align: center;
+}
+ion-content{
+    --background-color: #2A3088;
+    --overflow:hidden;
+     overflow:auto;
+     &::-webkit-scrollbar{
+         display: none;
+     }
 }

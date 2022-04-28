@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 // import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
@@ -10,39 +9,35 @@ export class StorageService {
 
   // private _storage: Storage | null = null;
 
-  constructor(private storage: Storage, private router: Router) {
+  constructor(private stor: Storage,) {
     this.init();
   }
 
 
   async init() {
     
-    await this.storage.create();
+    await this.stor.create();
     
   }
 
 // Store the value
 async store(storageKey: string, value: any) {
 const Value = JSON.stringify(value);
-await this.storage?.set(
-storageKey,
-Value
-);
-
+await this.stor?.set(storageKey, Value);
 }
 
 // Get the value
 async get(storageKey: string) {
-const ret = await this.storage?.get(storageKey );
+const ret = await this.stor?.get(storageKey );
 return JSON.parse(ret);
 }
 
 async removeStorageItem(storageKey: string) {
-await this.storage?.remove(storageKey );
+await this.stor?.remove(storageKey );
 }
 
 // Clear storage
 async clear() {
-await this.storage?.clear();
+await this.stor?.clear();
 }
 }

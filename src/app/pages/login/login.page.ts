@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { StorageService } from 'src/app/services/storage.service';
 import { ConnectionStatus, NetworkService } from 'src/app/Services/network.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/toast.service';
 import { ApiService } from 'src/app/Services/api.service';
+import { IonLoaderService } from 'src/app/Services/ion-loader';
 
 @Component({
   selector: 'app-login',
@@ -23,11 +23,11 @@ export class LoginPage implements OnInit {
 
   constructor(
     public Auth: AuthService,
-    public storage: StorageService,
-    public networkService: NetworkService,
-    public router: Router,
-    public toastService: ToastService,
-    public apiService: ApiService,
+    public network: NetworkService,
+    public route: Router,
+    public toast: ToastService,
+    public api: ApiService,
+    public loader: IonLoaderService,
     ) { }
 
   ngOnInit() {
@@ -52,44 +52,61 @@ export class LoginPage implements OnInit {
     this.data_user.partner_type = "landlord";
   }
 
-  Login(form: NgForm){
-    this.isLoanding = true;
+  LoginUser(form: NgForm){
+   
 
     this.data_user = form.value;
 
     // network disconnected
-      if(this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Offline){
+      if(this.network.getCurrentNetworkStatus() === ConnectionStatus.Offline){
         if(this.validateInputs()){
           this.Auth.getUser().then((user) => {
             if (this.data_user.email === user.email && this.data_user.password === user.password) {
-              this.storage.store("user",user.user).then();
-                this.router.navigate(['home']);
-              window.location.reload();
+              this.isLoanding = true;
+              // this.storage.store("user",user.user).then();
+              this.route.navigate(['home']);
+              // window.location.reload();
             }else {
-              this.toastService.presentToast(user.message);
+              this.toast.presentToast("Email ou mot de passe incorrecte !!");
               return;
             }
           });
         } else{
-          this.toastService.presentToast("Email ou mot de passe incorrecte !!");
+          this.toast.presentToast("Veillez entrer un email et un mot de passe valide !");
         }
       }
 
     // network connected
-    if(this.networkService.getCurrentNetworkStatus() === ConnectionStatus.Online){
+    if(this.network.getCurrentNetworkStatus() === ConnectionStatus.Online){
         if(this.validateInputs()){
-          this.Auth.login(this.data_user).subscribe((res) => {
-            console.log("Http Responde:", res);
+          this.Auth.login(this.data_user).subscribe((res: any) => {
+            console.log("Http Response:", res['data']);
             if(res){ 
-              this.uid = this.storage.get('user');
-              const user = {'id': this.uid, 'email': this.data_user.email.trim(), 'password': this.data_user.password.trim()};
-              
-              this.storage.store('user-login', user).then();
+              this.Auth.getUser().then((user: any) => {
+                if(this.data_user.email === user.email && this.data_user.password === user.password){
+                  this.loader.SimpleLoader(this.isLoanding)
+                  if(user.partner_type === "landlord"){
+                    this.route.navigate['home'];
+                    window.location.reload();
+                  }else if(user.partner_type === "tenant"){
+                    this.route.navigate['properties'];
+                    window.location.reload();
+                  }
+                }
+                else {
+                  this.toast.presentToast("email ou mot de passe incorrecte !!");
+                  return;
+                }
+              })
+            }else{
+              this.toast.presentToast("Erreur serveur!");
             }
           });
         } else{
-          this.toastService.presentToast("Email ou mot de passe incorrecte !!");
+          this.toast.presentToast("Veillez entrer un email et un mot de passe valide");
         }
+      } else {
+        this.toast.presentToast("Vous etes hors connexion !");
       }
   }
 }

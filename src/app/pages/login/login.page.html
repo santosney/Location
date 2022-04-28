@@ -7,39 +7,39 @@
 <ion-content >
   <div class="container" >
     <div class="row" >
-      <img src="../../../assets/images/logo.png" alt="">
+        <img src="../../../assets/images/logo.png" alt="">
       <br>
-      <img src="../../../assets/images/connexion_tb.png" alt="">
+       <img src="../../../assets/images/connexion_tb.png" alt="">
     </div>
     
    <!-- <div class="login-select"></div> -->
    <div class="content" >
      <div class="form-header" *ngIf="isLoanding == false">
-       <h2 (click)="partner_type_landlord()"><strong >Locataire</strong></h2>
-       <h2>|</h2>
-       <h2 (click)="partner_type_tenant()"><strong>Bayeur</strong></h2>
+          <h2 (click)="partner_type_landlord()"><strong >Locataire</strong></h2>
+          <h2>|</h2>
+          <h2 (click)="partner_type_tenant()"><strong>Bayeur</strong></h2>
      </div>
       <div class="login-form" *ngIf="isLoanding == false">
-        <form (ngSubmit)="Login(f)" #f="ngForm" novalidate>
-          <ion-item>
-            <ion-label position="floating">Email address</ion-label>
-            <ion-input type="email" name="email" [(ngModel)]="data_user.email"></ion-input>
-          </ion-item>
-          
-          <ion-item>
-            <ion-label position="floating">Password</ion-label>
-            <ion-input type="password" name="password" [(ngModel)]="data_user.password"></ion-input>
-          </ion-item>
-          <br>
+          <form (ngSubmit)="LoginUser(f)" #f="ngForm" novalidate>
+            <ion-item>
+                <ion-label position="floating">Email address</ion-label>
+                <ion-input  id="email" type="email" name="email" [(ngModel)]="data_user.email" required></ion-input>
+            </ion-item>
+            
+            <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input id="password" type="password" name="password" [(ngModel)]="data_user.password" required></ion-input>
+            </ion-item>
+            <br>
 
-          <ion-button  expand="block" type="submit"  >LOGIN</ion-button>
-          <!-- <br> -->
-          <a routerLink="reset-password">Forgot password ?</a>
-        </form> 
+            <ion-button  expand="block" type="submit"  >LOGIN</ion-button>
+            <!-- <br> -->
+            <a routerLink="reset-password">Forgot password ?</a>
+          </form> 
       </div>
       <div class="setLoading" *ngIf="isLoanding == true">
         <br><br><br><br><br><br><br><br>
-        <ion-progress-bar value="0.5" buffer="0.3" type="indeterminate" ></ion-progress-bar>
+          <ion-progress-bar value="0.5" buffer="0.3" type="indeterminate" ></ion-progress-bar>
         <br><br><br><br><br><br><br><br>
       </div>
    </div>

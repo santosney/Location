@@ -9,7 +9,7 @@ import { StorageService } from './storage.service';
  
 const API_STORAGE_KEY = 'specialkey';
 
-const API_URL_ = '';
+const API_URL_ = '/api/get/landlord_info';
 
 
 
@@ -30,14 +30,14 @@ export class ApiService {
  
 
   // recupere tous les datas
-  getAllData(uid): Observable<any[]> {
+  getAllData(uid, parthnerURL: any): Observable<any[]> {
       // Return real API data and store it locally
-      return this.http.post<any[]>(API_URL_,{"jsonrpc":"2.0","params":{"uid":uid}}).pipe(
+      return this.http.post<any[]>(API_URL_ + parthnerURL, {"jsonrpc":"2.0","params":{"uid":uid}}).pipe(
         map(res => res['data']),
         tap(res => {
-          console.log("operateurs service--------  ",res);
+          console.log("Data ----------  ",res);
           // this.setLocalData('res', res);
-          this.setLocalData('data', res['data'])
+          // this.setLocalData('data', res['data']);
         })
       )
   }

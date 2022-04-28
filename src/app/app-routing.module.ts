@@ -8,7 +8,7 @@ const routes: Routes = [
   // },
  
   {
-    path: '',
+    path: 'login',
     loadChildren: () => import('./pages/wellcom/wellcom.module').then( m => m.WellcomPageModule)
   },
 
@@ -21,7 +21,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/properties/properties.module').then( m => m.PropertiesPageModule)
   },
   {
-    path: 'login',
+    path: '',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
