@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 
 export class HttpService {
 
-  apiUrl:string =  'https://test-erp.ktco-btp.com/';
+  apiUrl:string =  'https://conceptimmo.advancecloud.org/';
   // apiUrl:string =  'http://26.174.238.244:8069/';
 
 
@@ -27,7 +27,6 @@ export class HttpService {
         const headers = new HttpHeaders({'Content-Type': 'application/json'});
         const options = { headers: headers};
         const url = this.apiUrl + serviceName;
-        
         return this.http.get(url, options);
       }
   }

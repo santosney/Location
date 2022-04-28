@@ -1,12 +1,11 @@
 <ion-content>
-  <ion-slides pager="true" [options]="slideOpts">
+  <ion-slides pager="true" [options]="slideOpts" #slides (ionSlideWillChange)="slideChange()">
     <ion-slide>
       <img src="../../../assets/images/home.png" alt="" class="home">
       <br><br><br>
     </ion-slide>
 
     <ion-slide>
-     
       <div class="containt">
         <img src="../../../assets/images/entete_1.png" alt="" class="slide_header">
         <img src="../../../assets/images/slide1.png" alt="" class="silde_content">

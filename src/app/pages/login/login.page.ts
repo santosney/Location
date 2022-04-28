@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/toast.service';
 import { ApiService } from 'src/app/Services/api.service';
 import { IonLoaderService } from 'src/app/Services/ion-loader';
+import { StorageService } from 'src/app/Services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +29,7 @@ export class LoginPage implements OnInit {
     public toast: ToastService,
     public api: ApiService,
     public loader: IonLoaderService,
+    private storageService: StorageService,
     ) { }
 
   ngOnInit() {
@@ -79,28 +81,23 @@ export class LoginPage implements OnInit {
     // network connected
     if(this.network.getCurrentNetworkStatus() === ConnectionStatus.Online){
         if(this.validateInputs()){
-          this.Auth.login(this.data_user).subscribe((res: any) => {
-            console.log("Http Response:", res['data']);
-            if(res){ 
-              this.Auth.getUser().then((user: any) => {
+          this.Auth.login(this.data_user).subscribe(() => {
+            console.log("Http Response:");
+              this.storageService.get('user-login').then((user: any) => {
+                console.log(user);
                 if(this.data_user.email === user.email && this.data_user.password === user.password){
+                  console.log(user);
                   this.loader.SimpleLoader(this.isLoanding)
                   if(user.partner_type === "landlord"){
-                    this.route.navigate['home'];
-                    window.location.reload();
+                    console.log(user);
+                    this.route.navigate(["home"]);
+                    // window.location.reload();
                   }else if(user.partner_type === "tenant"){
-                    this.route.navigate['properties'];
+                    this.route.navigate(['properties']);
                     window.location.reload();
                   }
                 }
-                else {
-                  this.toast.presentToast("email ou mot de passe incorrecte !!");
-                  return;
-                }
               })
-            }else{
-              this.toast.presentToast("Erreur serveur!");
-            }
           });
         } else{
           this.toast.presentToast("Veillez entrer un email et un mot de passe valide");

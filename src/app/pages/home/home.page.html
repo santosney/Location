@@ -14,52 +14,19 @@
 <ion-content [fullscreen]="true">
     <div class="card-content">
       <br><br>
-      <div class="row">
-        <ion-card class="card-one" (click)="checkService()" routerLink="properties">
+      <div class="row" *ngFor="let item of categories">
+        <ion-card  (click)="checkProperties(item.categ_id)" >
           <ion-card-header>
             <img src="../../assets/images/immeuble.png" alt="">
           </ion-card-header>
         
           <ion-card-content>
             <br>
-            <strong>category[0]</strong>
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card class="card-two" (click)="checkService()" routerLink="properties">
-          <ion-card-header>
-            <img src="../../assets/images/immeuble.png" alt="">
-          </ion-card-header>
-        
-          <ion-card-content>
+            <strong>{{item.category}}</strong>
             <br>
-            <strong>{{category[1]}}</strong>
+            <strong>{{item.num}}</strong>
           </ion-card-content>
-        </ion-card>
-      </div>
-
-      <div class="row">
-        <ion-card class="card-one" (click)="checkService()" routerLink="properties">
-          <ion-card-header>
-            <img src="../../assets/images/immeuble.png" alt="">
-          </ion-card-header>
-        
-          <ion-card-content>
-            <br>
-            <strong>category[0]</strong>
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card class="card-two" (click)="checkService()" routerLink="properties">
-          <ion-card-header>
-            <img src="../../assets/images/immeuble.png" alt="">
-          </ion-card-header>
-        
-          <ion-card-content>
-            <br>
-            <strong>category[1]</strong>
-          </ion-card-content>
-        </ion-card>
+        </ion-card> 
       </div>
       <br><br><br><br>
       <div class="footer">

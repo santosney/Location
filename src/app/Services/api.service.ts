@@ -9,7 +9,7 @@ import { StorageService } from './storage.service';
  
 const API_STORAGE_KEY = 'specialkey';
 
-const API_URL_ = '/api/get/landlord_info';
+const API_URL_ = 'https://conceptimmo.advancecloud.org/';
 
 
 
@@ -33,9 +33,9 @@ export class ApiService {
   getAllData(uid, parthnerURL: any): Observable<any[]> {
       // Return real API data and store it locally
       return this.http.post<any[]>(API_URL_ + parthnerURL, {"jsonrpc":"2.0","params":{"uid":uid}}).pipe(
-        map(res => res['data']),
+        map(res => res['result']),
         tap(res => {
-          console.log("Data ----------  ",res);
+          console.log("Data ----------  ",res['data']);
           // this.setLocalData('res', res);
           // this.setLocalData('data', res['data']);
         })

@@ -12,7 +12,7 @@ import { ApiService } from './api.service';
 })
 export class AuthService {
 
-  parthnerUrl = ['/api/get/landlord_info', '/api/get/tenant_info'];
+  parthnerUrl = ['api/get/landlord_info', 'api/get/tenant_info'];
   userData$ = new BehaviorSubject<any>([]);
   isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
 
@@ -71,6 +71,7 @@ constructor(
       }
 
       getUser() {
+        // console.log(this.storageService.get("data_landlord"));
        return  this.storageService.get("user-login");
       }
 
@@ -79,26 +80,42 @@ constructor(
     console.log("---------------------------",{"jsonrpc":"2.0","params":postData})
     
     return this.httpService.post('api/authen/', {"jsonrpc":"2.0","params":postData}).pipe(
-     map(res => res['error']),
+     map(res => res['result']),
      tap(res => {
         console.log('-------------------Data login:', res);
-        if(res['code'] === 200){
-          const user = {'id': res['code'], 'email': postData.email, 'password': postData.password, 'partner_type': res['data'].message};
-          if(postData.partner_type === "tenant"){
-            this.api.getAllData(user.id, this.parthnerUrl[1]).subscribe((data) => {
-                this.storageService.store('data_tenant', data['data']);
+        if(res['status'] === 200){
+          const user = {'id': res['user'], 'email': postData.email, 'password': postData.password, 'partner_type': postData.partner_type};
+          console.log('----------------User data format', user);
+          this.storageService.store('user-login', user).then();
+          
+          if(postData.partner_type === "landlord"){
+            this.api.getAllData(user.id, this.parthnerUrl[0]).subscribe((data) => {
+                console.log(data);
+                this.storageService.store('data_landlord', data['data']);
+  
             });
-          }else if (postData.partner_type === "landlord"){
-             this.api.getAllData(user.id, this.parthnerUrl[0]).subscribe((data) => {
+          }else if (res['data'].partner_type === "tenant"){
+             this.api.getAllData(user.id, this.parthnerUrl[1]).subscribe((data) => {
                this.storageService.store('Data', data['data']);
              });
           }
-          console.log('----------------User data format', user);
-          this.storageService.store('user-login', user).then();
+          // this.storageService.get("user-login").then((user) => {
+          //   console.log("-----------user local", user);
+          //   if(postData.email === user.email && postData.password === user.password){
+          //     // this.loader.SimpleLoader(this.isLoanding)
+          //     if(user.partner_type === "landlord"){
+          //       this.router.navigate['home'];
+          //       // window.location.reload();
+          //     }else if(user.partner_type === "tenant"){
+          //       this.router.navigate['properties'];
+          //       // window.location.reload();
+          //     }
+          //   }
 
+          // })
           this.toastService.presentToast('Session ouverte !');
         }else {
-          this.toastService.presentToast(res.message);
+          this.toastService.presentToast(res['message']);
         }
      })
     );
