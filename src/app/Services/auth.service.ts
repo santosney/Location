@@ -32,9 +32,11 @@ constructor(
         }
 
     async loadToken() {
-      this.storageService.get("user").then(token => {
+      this.storageService.get("user-login").then(token => {
+        
         if (token) {
           this.isAuthenticated.next(true);
+          console.log('------------user login', token);
         } else {
           this.isAuthenticated.next(false);
         }   
@@ -79,46 +81,28 @@ constructor(
     // return this.httpService.post('api/auth/', postData);
     console.log("---------------------------",{"jsonrpc":"2.0","params":postData})
     
-    return this.httpService.post('api/authen/', {"jsonrpc":"2.0","params":postData}).pipe(
-     map(res => res['result']),
-     tap(res => {
-        console.log('-------------------Data login:', res);
-        if(res['status'] === 200){
-          const user = {'id': res['user'], 'email': postData.email, 'password': postData.password, 'partner_type': postData.partner_type};
-          console.log('----------------User data format', user);
-          this.storageService.store('user-login', user).then();
-          
-          if(postData.partner_type === "landlord"){
-            this.api.getAllData(user.id, this.parthnerUrl[0]).subscribe((data) => {
-                console.log(data);
-                this.storageService.store('data_landlord', data['data']);
-  
-            });
-          }else if (res['data'].partner_type === "tenant"){
-             this.api.getAllData(user.id, this.parthnerUrl[1]).subscribe((data) => {
-               this.storageService.store('Data', data['data']);
-             });
-          }
-          // this.storageService.get("user-login").then((user) => {
-          //   console.log("-----------user local", user);
-          //   if(postData.email === user.email && postData.password === user.password){
-          //     // this.loader.SimpleLoader(this.isLoanding)
-          //     if(user.partner_type === "landlord"){
-          //       this.router.navigate['home'];
-          //       // window.location.reload();
-          //     }else if(user.partner_type === "tenant"){
-          //       this.router.navigate['properties'];
-          //       // window.location.reload();
-          //     }
-          //   }
-
-          // })
-          this.toastService.presentToast('Session ouverte !');
-        }else {
-          this.toastService.presentToast(res['message']);
-        }
-     })
-    );
+    return this.httpService.post('api/authen/', {"jsonrpc":"2.0","params":postData});
+    // return this.httpService.post('api/authen/', {"jsonrpc":"2.0","params":postData}).pipe(
+    //  map(res => res['result']),
+    //  tap(res => {
+    //     if(res['status'] === 200){
+    //       const user = {'id': res['user'], 'email': postData.email, 'password': postData.password, 'partner_type': postData.partner_type};
+    //       this.storageService.store('user-login', user).then(); 
+    //       if(postData.partner_type === "landlord"){
+    //         this.api.getAllData(user.id, this.parthnerUrl[0]).subscribe((data) => {
+    //             this.storageService.store('data-landlord', data['data']);
+    //         });
+    //       }else if (postData.partner_type === "tenant"){
+    //          this.api.getAllData(user.id, this.parthnerUrl[1]).subscribe((data) => {
+    //            this.storageService.store('data-tenant', data['data']);
+    //          });
+    //       }
+    //       // this.toastService.presentToast('Session ouverte !');
+    //     }else {
+    //       this.toastService.presentToast(res['message']);
+    //     }
+    //  })
+    // );
   }
 
 

@@ -11,11 +11,12 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage-angular';
-import {Network} from '@ionic-native/network/ngx';
+import  { Network } from '@ionic-native/network/ngx';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,  
   ],
   entryComponents: [],
 

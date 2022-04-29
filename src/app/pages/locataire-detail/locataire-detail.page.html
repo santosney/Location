@@ -1,0 +1,66 @@
+                <!-- SCREEN TENANT LOCATION !!!!! -->
+
+                <div class="user-state">
+                  <ion-header [translucent]="true" >
+                    <ion-toolbar>
+                      <ion-title>
+                        <div class="header">
+                          <ion-buttons slot="start">
+                            <ion-back-button defaultHref="locataire" ></ion-back-button>
+                          </ion-buttons>
+                            <img src="../../assets/images/N.jpg" alt="" class="profil">
+                            <h2 class="title" ><strong>Mon tableau de bord</strong></h2>
+                            <ion-icon name="log-out-outline" (click)="logout()"></ion-icon>
+                        </div>  
+                        <ion-searchbar class="searchbar" placeholder="Search Properties, Area,etc..."></ion-searchbar>
+                      </ion-title>  
+                    </ion-toolbar>
+                  </ion-header>
+                  
+                  <ion-content [fullscreen]="true">
+                    
+                    <!-- card of subservice -->
+                      <div class="services">
+                        <br><br>
+                        <div class="row" *ngFor="let Item of properties_user"> 
+                          <div class="row-one" *ngIf="Item.id == id">
+                            <div class="item-card">
+                              <div class="content-card">
+                                  <div class="text-content">
+                                    <h2> <strong>{{Item.name}}</strong> </h2>
+                                    <br>
+                                    <p>Expenses</p>
+                                    <div class="location">
+                                      <span style="color: rgb(138, 216, 20);">{{Item.balance}} XAF</span>
+                                    </div>
+                                  </div> 
+                              </div>
+                            </div>
+                            <br>
+                            <div class="line-foor" *ngFor="let lease of Item.services">             
+                              <div class="content-all">  
+                                  <div class="row-information" >
+                                    <div class="line_one">
+                                      <h4><strong>{{lease.name}}</strong></h4>
+                                    </div><br>
+                                    <div class="details">
+                                      <p style="color: rgb(77, 119, 13);"> 
+                                        {{lease.amount}}XAF
+                                      </p >  
+                                      <p>
+                                       
+                                      </p>
+                                    </div>
+                                    <div class="line_two">
+                                      <h3> {{lease.start}} {{lease.end}}</h3>
+                                      <p><strong>{{lease.balance}}</strong></p>
+                                    </div>
+                                </div>
+                                <br>
+                              </div>
+                          </div>
+                          </div>  
+                        </div>
+                      </div>
+                  </ion-content>
+                  </div>

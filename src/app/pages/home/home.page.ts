@@ -33,19 +33,27 @@ export class HomePage implements OnInit {
   selectCategory(){
       this.storageService.get('user-login').then((res: any) => {
         this.uid = res.id;
-        console.log(this.uid);
       });
-      this.storageService.get('data_landlord').then((data: any) => {
+      this.storageService.get('data-landlord').then((data: any) => {
         this.categories = data;
-        console.log(data);
-      })
-
-      // this.category = this.data_landlord.category;
+      });
   }
 
   checkProperties(id: any){
-    console.log(id)
-    this.route.navigate(['properties', {"category_id": id}]);
+    console.log(id);
+    this.route.navigate(['properties'], {state: {category_id: id}});
+  }
+  logout(){
+    this.storageService.get('user-login').then((data) => {
+      if(data.partner_type == 'landlord'){
+        this.storageService.removeStorageItem('data-landlord').then();
+        this.route.navigate(['']);
+      }else{
+        this.storageService.removeStorageItem('data-tenant')
+        this.route.navigate(['']);
+      }
+    });
+    this.storageService.removeStorageItem('user-login').then();
   }
 
 }

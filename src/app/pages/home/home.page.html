@@ -4,8 +4,8 @@
       <div class="header">
           <img src="../../assets/images/N.jpg" alt="profil" class="profil">
           <h2 class="title"><strong>Mon tableau de bord</strong></h2>
-          <ion-icon name="notifications-outline"></ion-icon>
-          <ion-icon name="mail-unread-outline"></ion-icon>
+          <!-- <ion-icon name="notifications-outline"></ion-icon> -->
+          <ion-icon name="log-out-outline" (click)="logout()"></ion-icon>
       </div>
     </ion-title>
   </ion-toolbar>
@@ -22,9 +22,9 @@
         
           <ion-card-content>
             <br>
-            <strong>{{item.category}}</strong>
+            <p></p><strong>{{item.category}}</strong>
             <br>
-            <strong>{{item.num}}</strong>
+            <p><strong>{{item.num}}</strong></p>
           </ion-card-content>
         </ion-card> 
       </div>

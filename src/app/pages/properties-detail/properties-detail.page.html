@@ -1,65 +1,89 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      <div class="header">
-        <ion-buttons slot="start">
-          <ion-back-button defaultHref="properties" ></ion-back-button>
-        </ion-buttons>
-          <img src="../../assets/images/N.jpg" alt="" class="profil">
-          <h2 class="title"><strong>{{more_properties.name}}</strong></h2>
-          <ion-icon name="notifications-outline" class="icon-notification"></ion-icon>
-          <ion-icon name="mail-unread-outline"></ion-icon>
-      </div>  
-      <ion-searchbar class="searchbar" placeholder="Search Properties, Area,etc..."></ion-searchbar>
+        <div class="header">
+            <ion-buttons slot="start">
+              <ion-back-button defaultHref="properties" ></ion-back-button>
+            </ion-buttons>
+              <img src="../../assets/images/N.jpg" alt="" class="profil">
+                <div class="row-show1" *ngFor="let item of more_properties">
+                      <div class="row-show2" *ngIf="item.categ_id == id_cat" >
+                        <div class="row-show3" *ngFor="let itemProp of item.properties">
+                          <div class="row-swo4" *ngIf="itemProp.id == id_prop">
+                            <h2 class="title"><strong>{{itemProp.name}}</strong></h2>
+                          </div>
+                        </div>
+                      </div>   
+                </div> 
+                <ion-icon name="notifications-outline" class="icon-notification"></ion-icon>
+                <ion-icon name="mail-unread-outline"></ion-icon>
+        </div>  
+        <ion-searchbar class="searchbar" placeholder="Search Properties, Area,etc..."></ion-searchbar>
+
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="content-detail">
   
+  <div class="content-detail" >
     <br>
-      <div class="row-lg">
+  <div class="row-one" *ngFor="let item of more_properties">
+    <div class="row-two" *ngIf="item.categ_id == id_cat">
+      <div class="row-tree" *ngFor="let itemProp of item.properties">
+        <div class="row-lg">
           <div class="line_one">
             <h2><strong>GROSS REVENUE</strong></h2>
             <h2><strong>EXPENSES</strong></h2> 
           </div>
           <div class="line_two">
-            <h1>{more_properties.balance}XAF</h1>
-            <h1>{more_properties.balance}XAF</h1>
+            <h1>AVOIR XAF</h1>
+            <h1>{{itemProp.expense}} XAF</h1>
           </div>
           <div class="row-ld">
             <div class="line_one">
               <h2><strong>NET RESULT</strong></h2>
-              <h1>{more_properties.balance}XAF</h1>
+              <h1>{{itemProp.balance}} XAF</h1>
             </div>
           </div>
       </div>
-
-    <br>
-    <br>
-    <br>
-      <div class="content-all" *ngFor="let item of more_properties">
-          
-          <div class="row-information" >
-            <div class="line_one">
-              <h4><strong>{more_properties.balance}</strong></h4>
-              <p>Active</p>
-            </div>
-            <div class="details">
-              <p>
-                Long street-Akwa rue 12504
-              </p >  
-              <p>
-                Jean LUC
-              </p>
-            </div>
-            <div class="line_two">
-              <h3>{{more_properties.start}} {{more_properties.end}}</h3>
-              <p><strong>{more_properties.balance}XAF</strong></p>
+      </div>
+    </div>
+  </div>
+    
+  <br>
+  <br>
+  <br>
+    <div class="line" *ngFor="let item of more_properties">
+      <div class="line-one" *ngIf="item.categ_id == id_cat">
+        <div class="line-two" *ngFor="let itemProperties of item.properties">
+            <div class="line-tree" *ngIf="itemProperties.id == id_prop">
+              <div class="line-foor" *ngFor="let lease of itemProperties.lease_detail">             
+                      <div class="content-all">  
+                          <div class="row-information" >
+                            <div class="line_one">
+                              <h4><strong>{{lease.name}}</strong></h4>
+                              <p>Active</p>
+                            </div>
+                            <div class="details">
+                              <p> 
+                                {{itemProperties.adress}}
+                              </p >  
+                              <p>
+                                {{lease.tenant}}
+                              </p>
+                            </div>
+                            <div class="line_two">
+                              <h3>From {{lease.start}} {{lease.end}}</h3>
+                              <p><strong>{{lease.balance}}XAF</strong></p>
+                            </div>
+                        </div>
+                        <br>
+                      </div>
+              </div>
             </div>
         </div>
-        <br>
       </div>
+    </div>
   </div>
 </ion-content>

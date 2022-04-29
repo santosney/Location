@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/Services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/Services/storage.service';
@@ -15,50 +15,43 @@ export class PropertiesPage implements OnInit {
   uid: any;
   category_id :any;
   properties_title = "";
-  properties_details  = [{}];
+  properties_details  = [];
 
   constructor(
-    public route: ActivatedRoute,
+    public activateRoute: ActivatedRoute,
+    public router: Router,
     public api: ApiService,
     public authen: AuthService,
     private storageService: StorageService,
   ) { 
-    this.route.queryParams.subscribe((params) =>{
-      console.log(params);
-      this.category_id = params['category_id'];
-    })
+    this.category_id = this.router.getCurrentNavigation().extras.state.category_id;
+    console.log('-----------cat_id',this.category_id)
   }
 
   ngOnInit() {
     this.selectPatner();
+    console.log('-------------------properties',this.properties_details);
   }
 
  
 
-//choix del'utilisateur
+//choix de la proprité
   selectPatner(){
-    console.log(this.category_id);
     this.storageService.get('user-login').then((res) => {
-      console.log('--------------', res);
       this.partner_type = res.partner_type;
-      console.log("------------------propritaire", this.partner_type)
       if(res.partner_type === "landlord"){
-        console.log("------------------propritaire");
-        this.storageService.get('data_landlord').then((data) =>{
-          if(this.category_id == data.categ_id){
-            this.properties_details = data.properties;
-             console.log(data);
-          }
+        this.storageService.get('data-landlord').then((data) =>{
+              this.properties_details = data;
         });
       }else if(this.partner_type === "tenant"){
-        console.log("--------------Locataire")
-        // this.api.getLocalData1('data_tenant').subscribe((res) => {
-        //   this.properties_details = res;
-        // })
+        this.storageService.get('data-tenant').then((data) =>{
+          this.properties_details = data;
+    });
       }
     });
   }
-  checkFacture(){
-    console.log("check  a facture");
+  checkDetail(id_cat:any, id_prop: any){
+    console.log(id_cat, id_prop);
+   return this.router.navigate(['properties-detail'], {state :{categ_id: id_cat, prop_id: id_prop}});
   }
 }

@@ -48,7 +48,7 @@ ion-content{
         background-color: #F6F6F6;
         .row{
             display: flex;
-           
+            flex-direction: column;
             padding-left: 10%;
             ion-card{
                 background-color: #F5F5F5;
@@ -63,6 +63,13 @@ ion-content{
             color: white;
             height: 60px;
             text-align: center;
+            p{
+                border-radius: 20px;
+                width: 20px;
+                margin-left: 50%;
+                background-color: orange;
+                padding-top: -1%;
+            }
         }
     }
 }

@@ -14,10 +14,10 @@
     
    <!-- <div class="login-select"></div> -->
    <div class="content" >
-     <div class="form-header" *ngIf="isLoanding == false">
-          <h2 (click)="partner_type_landlord()"><strong >Locataire</strong></h2>
+     <div class="form-header" *ngFor="let item of form">
+          <h2 ><strong >Locataire </strong></h2>
           <h2>|</h2>
-          <h2 (click)="partner_type_tenant()"><strong>Bayeur</strong></h2>
+          <h2><strong>Propriétaire </strong></h2>
      </div>
       <div class="login-form" *ngIf="isLoanding == false">
           <form (ngSubmit)="LoginUser(f)" #f="ngForm" novalidate>

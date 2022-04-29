@@ -1,17 +1,24 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Help
-    </ion-title>
-  </ion-toolbar>
-</ion-header> -->
 
+<ion-app>
+  <ion-menu side="end" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar color="secondary">
+        <ion-title>Location</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item><ion-icon name="log-out-outline"></ion-icon><ion-button>Logout</ion-button></ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main">
+    <ion-content class="ion-padding">
+      <ion-menu-toggle>
+        <ion-button><ion-icon name="menu-outline"></ion-icon></ion-button>
+      </ion-menu-toggle>
+    </ion-content>
+  </div>
+</ion-app>
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Help</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Help"></app-explore-container>
-</ion-content>
+  

@@ -14,13 +14,20 @@ import { StorageService } from 'src/app/Services/storage.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  parthnerUrl = ['api/get/landlord_info', 'api/get/tenant_info'];
   isLoanding: boolean = false;
   uid: any;
+  type_user: any;
   data_user = {
     email: '',
     password: '',
     partner_type: '',
   };
+
+  public form = [
+    { val: 'Locataire', isChecked: true },
+    { val: 'Propriétaire', isChecked: false },
+  ];
 
   constructor(
     public Auth: AuthService,
@@ -30,9 +37,13 @@ export class LoginPage implements OnInit {
     public api: ApiService,
     public loader: IonLoaderService,
     private storageService: StorageService,
-    ) { }
+    ) {
+
+      this.type_user = this.route.getCurrentNavigation().extras.state.parthner_type;
+     }
 
   ngOnInit() {
+    console.log(this.data_user.partner_type);
   }
 
   validateInputs() {
@@ -59,15 +70,18 @@ export class LoginPage implements OnInit {
 
     this.data_user = form.value;
 
+    this.data_user.partner_type = this.type_user;
+
     // network disconnected
       if(this.network.getCurrentNetworkStatus() === ConnectionStatus.Offline){
         if(this.validateInputs()){
           this.Auth.getUser().then((user) => {
+            console.log(this.data_user)
             if (this.data_user.email === user.email && this.data_user.password === user.password) {
               this.isLoanding = true;
               // this.storage.store("user",user.user).then();
-              this.route.navigate(['home']);
-              // window.location.reload();
+              this.route.navigate(['tabs']);
+              window.location.reload();
             }else {
               this.toast.presentToast("Email ou mot de passe incorrecte !!");
               return;
@@ -81,23 +95,29 @@ export class LoginPage implements OnInit {
     // network connected
     if(this.network.getCurrentNetworkStatus() === ConnectionStatus.Online){
         if(this.validateInputs()){
-          this.Auth.login(this.data_user).subscribe(() => {
-            console.log("Http Response:");
-              this.storageService.get('user-login').then((user: any) => {
-                console.log(user);
-                if(this.data_user.email === user.email && this.data_user.password === user.password){
-                  console.log(user);
-                  this.loader.SimpleLoader(this.isLoanding)
-                  if(user.partner_type === "landlord"){
-                    console.log(user);
+          this.Auth.login(this.data_user).subscribe((data) => {
+            console.log('-----------debut', data.result);
+            if(data.result.status === 200){
+              const user = {'id': data.result.user, 'email': this.data_user.email, 'password': this.data_user.password, 'partner_type': this.data_user.partner_type};
+              this.storageService.store('user-login', user).then();
+              console.log('--------------parthner',this.data_user.partner_type);
+              if(this.data_user.partner_type === "landlord"){
+                console.log('--------------parthner',this.data_user.partner_type);
+                this.api.getAllData(user.id, this.parthnerUrl[0]).subscribe((res) => {
+                  console.log('---------user', user);
+                  console.log('---------data', res['result'].data);
+                    this.storageService.store('data-landlord',  res['result'].data);
                     this.route.navigate(["home"]);
-                    // window.location.reload();
-                  }else if(user.partner_type === "tenant"){
-                    this.route.navigate(['properties']);
-                    window.location.reload();
-                  }
-                }
-              })
+                });
+              }else {
+                 this.api.getAllData(user.id, this.parthnerUrl[1]).subscribe((res) => {
+                   this.storageService.store('data-tenant', res['result'].data);
+                   this.route.navigate(['locataire']);
+                 });
+              }
+            }else {
+              this.toast.presentToast(data['message']);
+            }
           });
         } else{
           this.toast.presentToast("Veillez entrer un email et un mot de passe valide");

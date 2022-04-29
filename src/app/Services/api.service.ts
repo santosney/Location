@@ -32,14 +32,7 @@ export class ApiService {
   // recupere tous les datas
   getAllData(uid, parthnerURL: any): Observable<any[]> {
       // Return real API data and store it locally
-      return this.http.post<any[]>(API_URL_ + parthnerURL, {"jsonrpc":"2.0","params":{"uid":uid}}).pipe(
-        map(res => res['result']),
-        tap(res => {
-          console.log("Data ----------  ",res['data']);
-          // this.setLocalData('res', res);
-          // this.setLocalData('data', res['data']);
-        })
-      )
+      return this.http.post<any[]>(API_URL_ + parthnerURL, {"jsonrpc":"2.0","params":{"uid":uid}});
   }
 
   // Save result of API requests
