@@ -16,17 +16,17 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },
   {
     path: 'properties',
     loadChildren: () => import('./pages/properties/properties.module').then( m => m.PropertiesPageModule),
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },
   {
     path: 'properties-detail',
     loadChildren: () => import('./pages/properties-detail/properties-detail.module').then(m =>m.PropertiesDetailPageModule),
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },
   
   {
@@ -44,12 +44,12 @@ const routes: Routes = [
   {
     path: 'locataire',
     loadChildren: () => import('./pages/locataire/locataire.module').then( m => m.LocatairePageModule),
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },
   {
     path: 'locataire-detail',
     loadChildren: () => import('./pages/locataire-detail/locataire-detail.module').then( m => m.LocataireDetailPageModule),
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },
   {
     path: '',
