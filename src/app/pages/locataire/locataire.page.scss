@@ -13,7 +13,7 @@ ion-header{
                     // padding-top: -10%;
                     text-align: center;
                     img{
-                        width: 50px;
+                        width: 30px;
                         height: 30px;
                         margin-top: 2%;
                         border-radius: 20px; 
@@ -23,7 +23,7 @@ ion-header{
                         font-size: 1rem;
                         flex: 1;
                         margin: 10px;
-                        padding-left: 20%;
+                        padding-left: 7%;
                         margin-top: 2%;
                     }
                     .icon-notification{
@@ -52,11 +52,12 @@ ion-content{
    }
 }
 .item-card{
-    height: auto; 
+    height: 100px; 
     background-color: white;
+    border-radius: 20px;
     width: 100%;
     .content-card{
-        display: flex;
+        // display: flex;
         text-align: center;
         height: 150px;
         img{
@@ -78,15 +79,23 @@ ion-content{
                 color: black;
                 font-size: 1rem;
                 margin-left: -10%;
+                padding-top: 2%;
             }
             p{
-                margin-left: -50%;
+                margin-left: 20%;
+                margin-top:-1%;
+                // position: absolute;
+            }
+            .line{
+                display: flex;
             }
         }
        
        
         span{
-            margin-left: -20%;
+            // margin-left: -20%;
+            margin-top: -2%;
+            margin-left: 20%;
         }
         
     }
@@ -159,25 +168,26 @@ ion-content{
            }
         }
         .line_one > p {
-            margin-left: 50%;
-            margin-top: 4.5%;
+            margin-left: 10%;
+            // margin-top: 4.5%;
             color: #827171;
         }
         .line_two{
-            display: flex;
-            margin-top: -8%;
+            // display: flex;
+            // margin-top: -8%;
             h3{
                 font-size: 1rem;
                 color: #827171;
             }
             p{
-                margin-left: 20%;
-                color: rgb(167, 241, 57);
+                // margin-left: 20%;
+                // color: rgb(167, 241, 57);
             }
         }
         .details{
+            display: flex;
             p{
-                margin-top: -3%;
+                // margin-top: -3%;
             }
         }
         .details > p:first-child{

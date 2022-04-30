@@ -19,14 +19,17 @@
                     <!-- card of subservice -->
                       <div class="services">
                         <div class="row" *ngFor="let Item of properties_user"> 
+                          <br>
                           <div class="item-card" (click)="checkId(Item.id)" >
                               <div class="content-card">
                                   <div class="text-content">
                                     <h2> <strong>{{Item.name}}</strong> </h2>
                                     <br>
-                                    <p>Expenses</p>
+                                    <div class="line">
+                                      <p>Balance</p>
                                     <div class="location">
                                       <span style="color: rgb(138, 216, 20);">{{Item.balance}} XAF</span>
+                                    </div>
                                     </div>
                                   </div> 
                               </div>

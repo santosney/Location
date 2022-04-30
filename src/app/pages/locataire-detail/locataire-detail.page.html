@@ -29,10 +29,12 @@
                                   <div class="text-content">
                                     <h2> <strong>{{Item.name}}</strong> </h2>
                                     <br>
-                                    <p>Expenses</p>
+                                    <div class="line">
+                                      <p>Balance</p>
                                     <div class="location">
                                       <span style="color: rgb(138, 216, 20);">{{Item.balance}} XAF</span>
                                     </div>
+                                    </div> 
                                   </div> 
                               </div>
                             </div>
@@ -41,19 +43,18 @@
                               <div class="content-all">  
                                   <div class="row-information" >
                                     <div class="line_one">
+                                      <p>description:</p>
                                       <h4><strong>{{lease.name}}</strong></h4>
-                                    </div><br>
-                                    <div class="details">
-                                      <p style="color: rgb(77, 119, 13);"> 
-                                        {{lease.amount}}XAF
-                                      </p >  
-                                      <p>
-                                       
-                                      </p>
                                     </div>
                                     <div class="line_two">
+                                      <p>date:</p>
                                       <h3> {{lease.start}} {{lease.end}}</h3>
-                                      <p><strong>{{lease.balance}}</strong></p>
+                                    </div>
+                                    <div class="details">
+                                      <p>Amount: </p>
+                                      <p> 
+                                        {{lease.amount}}XAF
+                                      </p >  
                                     </div>
                                 </div>
                                 <br>

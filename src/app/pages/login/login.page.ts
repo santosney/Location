@@ -7,6 +7,8 @@ import { ToastService } from 'src/app/services/toast.service';
 import { ApiService } from 'src/app/Services/api.service';
 import { IonLoaderService } from 'src/app/Services/ion-loader';
 import { StorageService } from 'src/app/Services/storage.service';
+import { LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -37,6 +39,7 @@ export class LoginPage implements OnInit {
     public api: ApiService,
     public loader: IonLoaderService,
     private storageService: StorageService,
+    public loadinf : LoadingController,
     ) {
 
       this.type_user = this.route.getCurrentNavigation().extras.state.parthner_type;
@@ -72,25 +75,7 @@ export class LoginPage implements OnInit {
 
     this.data_user.partner_type = this.type_user;
 
-    // network disconnected
-      if(this.network.getCurrentNetworkStatus() === ConnectionStatus.Offline){
-        if(this.validateInputs()){
-          this.Auth.getUser().then((user) => {
-            console.log(this.data_user)
-            if (this.data_user.email === user.email && this.data_user.password === user.password) {
-              this.isLoanding = true;
-              // this.storage.store("user",user.user).then();
-              this.route.navigate(['tabs']);
-              window.location.reload();
-            }else {
-              this.toast.presentToast("Email ou mot de passe incorrecte !!");
-              return;
-            }
-          });
-        } else{
-          this.toast.presentToast("Veillez entrer un email et un mot de passe valide !");
-        }
-      }
+ 
 
     // network connected
     if(this.network.getCurrentNetworkStatus() === ConnectionStatus.Online){
@@ -98,6 +83,7 @@ export class LoginPage implements OnInit {
           this.Auth.login(this.data_user).subscribe((data) => {
             console.log('-----------debut', data.result);
             if(data.result.status === 200){
+              this.toast.presentToast(data.result.message);
               const user = {'id': data.result.user, 'email': this.data_user.email, 'password': this.data_user.password, 'partner_type': this.data_user.partner_type};
               this.storageService.store('user-login', user).then();
               console.log('--------------parthner',this.data_user.partner_type);
@@ -115,15 +101,14 @@ export class LoginPage implements OnInit {
                    this.route.navigate(['locataire']);
                  });
               }
-            }else {
-              this.toast.presentToast(data['message']);
-            }
+            }else {this.toast.presentToast(data.result.message); }
           });
         } else{
-          this.toast.presentToast("Veillez entrer un email et un mot de passe valide");
+          this.toast.presentToast("Veillez entrer un email et un mot de passe valide!");
         }
       } else {
+        console.log('----------------no internet');
         this.toast.presentToast("Vous etes hors connexion !");
-      }
+      }    
   }
 }
