@@ -10,8 +10,10 @@ import { StorageService } from 'src/app/Services/storage.service';
   styleUrls: ['./locataire-detail.page.scss'],
 })
 export class LocataireDetailPage implements OnInit {
+  amountStatus = false;
    id : any;
   properties_user: any;
+  balanceStatus = false;
    
   constructor(
     public activateRoute: ActivatedRoute,
@@ -40,5 +42,25 @@ export class LocataireDetailPage implements OnInit {
     });
       }
     });
+  }
+
+  getStatus(amount: number){
+    if(amount > 0) {
+      this.amountStatus = true;
+      console.log('---------------vrai', amount);
+    }else {
+      this.amountStatus = false;
+      console.log('------------------faux', amount);
+    }
+  }
+
+  fetchStatus(amount: number){
+    if(amount > 0){
+      this.balanceStatus = true;
+      console.log('-----------vrai');
+    }else {
+      this.balanceStatus = false;
+      console.log('---------Faux');
+    }
   }
 }

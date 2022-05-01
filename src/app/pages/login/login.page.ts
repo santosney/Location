@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
     public route: Router,
     public toast: ToastService,
     public api: ApiService,
-    public loader: IonLoaderService,
+    public loader: LoadingController,
     private storageService: StorageService,
     public loadinf : LoadingController,
     ) {
@@ -47,6 +47,18 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     console.log(this.data_user.partner_type);
+  }
+
+  async presentLoading() {
+    const loading = await this.loader.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      duration: 1000,
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
 
   validateInputs() {
@@ -60,26 +72,16 @@ export class LoginPage implements OnInit {
         );
     }
 
-  partner_type_tenant(){
-    this.data_user.partner_type = "tenant";
-  }
-
-  partner_type_landlord(){
-    this.data_user.partner_type = "landlord";
-  }
 
   LoginUser(form: NgForm){
-   
 
     this.data_user = form.value;
-
     this.data_user.partner_type = this.type_user;
-
- 
 
     // network connected
     if(this.network.getCurrentNetworkStatus() === ConnectionStatus.Online){
         if(this.validateInputs()){
+          this.presentLoading().then();
           this.Auth.login(this.data_user).subscribe((data) => {
             console.log('-----------debut', data.result);
             if(data.result.status === 200){

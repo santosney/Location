@@ -24,6 +24,7 @@
                         <br><br>
                         <div class="row" *ngFor="let Item of properties_user"> 
                           <div class="row-one" *ngIf="Item.id == id">
+                            <div>{{getStatus(Item.balance)}}</div>
                             <div class="item-card">
                               <div class="content-card">
                                   <div class="text-content">
@@ -31,15 +32,19 @@
                                     <br>
                                     <div class="line">
                                       <p>Balance</p>
-                                    <div class="location">
-                                      <span style="color: rgb(138, 216, 20);">{{Item.balance}} XAF</span>
-                                    </div>
+                                      <div class="location" *ngIf="amountStatus == true">
+                                        <span style="color: rgb(138, 216, 20);">{{Item.balance}} XAF</span>
+                                      </div>
+                                      <div class="location" *ngIf="amountStatus == false">
+                                        <span style="color: red">{{Item.balance}} XAF</span>
+                                      </div>
                                     </div> 
                                   </div> 
                               </div>
                             </div>
                             <br>
-                            <div class="line-foor" *ngFor="let lease of Item.services">             
+                            <div class="line-foor" *ngFor="let lease of Item.services"> 
+                              <div> {{fetchStatus(lease.amount)}}</div>            
                               <div class="content-all">  
                                   <div class="row-information" >
                                     <div class="line_one">
@@ -50,9 +55,15 @@
                                       <p>date:</p>
                                       <h3> {{lease.start}} {{lease.end}}</h3>
                                     </div>
-                                    <div class="details">
-                                      <p>Amount: </p>
-                                      <p> 
+                                    <div class="details" *ngIf="balanceStatus == true">
+                                      <p>Montant: </p>
+                                      <p style="color: greenyellow;"> 
+                                        {{lease.amount}}XAF
+                                      </p >  
+                                    </div>
+                                    <div class="details" *ngIf="balanceStatus == false">
+                                      <p>Montant: </p>
+                                      <p style="color: red;"> 
                                         {{lease.amount}}XAF
                                       </p >  
                                     </div>

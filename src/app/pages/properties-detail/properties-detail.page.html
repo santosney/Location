@@ -33,19 +33,26 @@
       <div class="row-tree" *ngFor="let itemProp of item.properties">
         <div class="row-lg">
           <div class="line_one">
-            <h2><strong>GROSS REVENUE</strong></h2>
-            <h2><strong>EXPENSES</strong></h2> 
+            <h2><strong>RESULTAT NET</strong></h2>
+            <h2><strong>DEPENSES</strong></h2>   
           </div>
-          <div class="line_two">
-            <h1>AVOIR XAF</h1>
-            <h1>{{itemProp.expense}} XAF</h1>
-          </div>
-          <div class="row-ld">
+         
+            <div>{{getStatus(itemProp.balance)}}</div>
+            <div *ngIf="amountStatus == true" class="line_two">
+              <h1 style="color: rgb(110, 156, 41);">{{itemProp.balance}} XAF</h1>
+              <h1 style="color: rgb(110, 156, 41);">{{itemProp.expense}} XAF</h1>
+            </div>
+            <div *ngIf="amountStatus == false" class="line_two">
+              <h1 style="color: red; ">{{itemProp.balance}} XAF</h1>
+              <h1 style="color: red; margin-left: 40%;">{{itemProp.expense}} XAF</h1>
+            </div>
+          
+          <!-- <div class="row-ld">
             <div class="line_one">
               <h2><strong>NET RESULT</strong></h2>
               <h1>{{itemProp.balance}} XAF</h1>
             </div>
-          </div>
+          </div> -->
       </div>
       </div>
     </div>
@@ -63,19 +70,26 @@
                           <div class="row-information" >
                             <div class="line_one">
                               <h4><strong>{{lease.name}}</strong></h4>
-                              <p>Active</p>
+                                <div class="active-cercle" style="background-color: greenyellow;" *ngIf="lease.active == true"></div>
+                                <div class="active-cercle" style="background-color: red;" *ngIf="lease.active == false"></div>
+                                <p *ngIf="lease.active == true">active</p>
+                                <p *ngIf="lease.active == false">inactive</p>
                             </div>
                             <div class="details">
                               <p> 
                                 {{itemProperties.adress}}
-                              </p >  
+                              </p>  
                               <p>
                                 {{lease.tenant}}
                               </p>
                             </div>
-                            <div class="line_two">
+                            <div class="line_two" *ngIf="balanceStatus == true">
                               <h3>From {{lease.start}} {{lease.end}}</h3>
-                              <p><strong>{{lease.balance}}XAF</strong></p>
+                              <p  style="color: greenyellow;"><strong>{{lease.balance}}XAF</strong></p>
+                            </div>
+                            <div class="line_two" *ngIf="balanceStatus == false">
+                              <h3>From {{lease.start}} {{lease.end}}</h3>
+                              <p   style="color: red;"><strong>{{lease.balance}}XAF</strong></p>
                             </div>
                         </div>
                         <br>

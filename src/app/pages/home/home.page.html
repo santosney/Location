@@ -13,25 +13,26 @@
 
 <ion-content [fullscreen]="true">
     <div class="card-content">
-      <br><br>
-      <div class="row" *ngFor="let item of categories">
-        <ion-card  (click)="checkProperties(item.categ_id)" >
-          <ion-card-header>
-            <img src="../../assets/images/immeuble.png" alt="">
-          </ion-card-header>
-        
-          <ion-card-content>
-            <br>
-            <p></p><strong>{{item.category}}</strong>
-            <br>
-            <p><strong>{{item.num}}</strong></p>
-          </ion-card-content>
-        </ion-card> 
-      </div>
-      <br><br><br><br>
-      <div class="footer">
-        <img src="../../assets/images/footer-login.png" alt="">
-      </div>
+        <div class="flex">
+          <div class="row" *ngFor="let item of categories">
+            <ion-card  (click)="checkProperties(item.categ_id)" >
+              <ion-card-header>
+                <img src="../../assets/images/immeuble.png" alt="">
+              </ion-card-header>
+            
+              <ion-card-content>
+              <strong>{{item.category}}</strong>
+                <br>
+                <p><strong>{{item.num}}</strong></p>
+              </ion-card-content>
+            </ion-card> 
+          </div>
+        </div>
+        <br><br>
+        <br><br><br><br>
+        <div class="footer">
+          <img src="../../assets/images/footer-login.png" alt="">
+        </div>
     </div>
 
 </ion-content>

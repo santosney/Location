@@ -10,6 +10,8 @@ import { StorageService } from 'src/app/Services/storage.service';
   styleUrls: ['./locataire.page.scss'],
 })
 export class LocatairePage implements OnInit {
+
+  amountStatus = false;
   properties_user  = [];
   constructor(
     public activateRoute: ActivatedRoute,
@@ -54,5 +56,15 @@ export class LocatairePage implements OnInit {
       }
     });
     this.storageService.removeStorageItem('user-login').then();
+  }
+
+  getStatus(amount: number){
+    if(amount > 0) {
+      this.amountStatus = true;
+      console.log('---------------vrai', amount);
+    }else {
+      this.amountStatus = false;
+      console.log('------------------faux', amount);
+    }
   }
 }

@@ -11,6 +11,8 @@ import { StorageService } from 'src/app/Services/storage.service';
 })
 
 export class PropertiesDetailPage implements OnInit {
+  amountStatus: boolean = false;
+  balanceStatus: boolean = false;
   uid: any;
   id_cat: any;
   id_prop: any;
@@ -44,6 +46,9 @@ export class PropertiesDetailPage implements OnInit {
         this.storage.get('data-landlord').then((data) =>{
               this.more_properties = data;
               console.log('local-data',this.more_properties);
+              this.more_properties.forEach((item) => {
+                console.log(item);
+              });
         });
       }else if(res.partner_type === "tenant"){
         console.log("--------------Locataire")
@@ -52,5 +57,24 @@ export class PropertiesDetailPage implements OnInit {
   }
   checkFacture(){
     console.log("check  a facture");
+  }
+  getStatus(amount: number){
+    if(amount > 0){
+      this.amountStatus = true;
+      console.log('-----------vrai');
+    }else {
+      this.amountStatus = false;
+      console.log('---------Faux');
+    }
+  }
+
+  fetchStatus(amount: number){
+    if(amount > 0){
+      this.balanceStatus = true;
+      console.log('-----------vrai');
+    }else {
+      this.balanceStatus = false;
+      console.log('---------Faux');
+    }
   }
 }

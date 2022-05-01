@@ -67,19 +67,21 @@ ion-header{
             margin-left: 5%;
         }
         .line_one > h2:last-child {
-            margin-left: 22%;
+            margin-left: 40%;
         }
         .line_two{
             display: flex;
             margin-top: -5%;
         }
         .line_two > h1:first-child{
-            color: rgb(160, 238, 43);
+            // color: rgb(160, 238, 43);
             padding-left: 2%;
         }
         .line_two > h1:last-child{
-            margin-left: 8%;
-            color: red;
+            margin-left: 10%;
+            position: absolute;
+            left: 30%;
+            // color: red;
         }
         .row-ld > .line_one > h1{
             color: rgb(167, 241, 57);
@@ -99,9 +101,22 @@ ion-header{
            h4{
                font-size: 0.8rem;
            }
+           .active-cercle{
+               width: 10px;
+               height: 10px;
+               border: none;
+               border-radius: 50px;
+            //    background-color: greenyellow;
+               margin-top: 5%;
+            //    margin-left: 70%;
+              position: absolute;
+              left: 70%;
+            //   top: -10%;
+           }
         }
         .line_one > p {
-            margin-left: 50%;
+            margin-left: 55%;
+            // padding-left: -2%;
             margin-top: 4.5%;
             color: #827171;
         }
@@ -114,6 +129,8 @@ ion-header{
             }
             p{
                 margin-left: 20%;
+                margin-top: 5%;
+                padding-left: -3%;
                 color: rgb(167, 241, 57);
             }
         }
