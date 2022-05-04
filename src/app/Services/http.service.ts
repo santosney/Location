@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 
 export class HttpService {
 
-  apiUrl:string =  'https://conceptimmo.advancecloud.org/';
+  apiUrl:string =  'http://144.217.12.148:8069/';
   // apiUrl:string =  'http://26.174.238.244:8069/';
 
 

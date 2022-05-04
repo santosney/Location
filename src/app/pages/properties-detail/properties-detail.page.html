@@ -5,8 +5,8 @@
             <ion-buttons slot="start">
               <ion-back-button defaultHref="properties" ></ion-back-button>
             </ion-buttons>
-              <img src="../../assets/images/N.jpg" alt="" class="profil">
-                <div class="row-show1" *ngFor="let item of more_properties">
+            <div *ngIf="image_url == false"><img src="../../../assets/icon/istockphoto-1300845620-612x612.jpg" alt="" class="profil"></div>
+            <div *ngIf="image_url != false"><img [src]="profil" alt="" class="profil"></div>                            <div class="row-show1" *ngFor="let item of more_properties">
                       <div class="row-show2" *ngIf="item.categ_id == id_cat" >
                         <div class="row-show3" *ngFor="let itemProp of item.properties">
                           <div class="row-swo4" *ngIf="itemProp.id == id_prop">
@@ -27,25 +27,26 @@
 <ion-content [fullscreen]="true">
   
   <div class="content-detail" >
-    <br>
+    
   <div class="row-one" *ngFor="let item of more_properties">
     <div class="row-two" *ngIf="item.categ_id == id_cat">
       <div class="row-tree" *ngFor="let itemProp of item.properties">
         <div class="row-lg">
           <div class="line_one">
-            <h2><strong>RESULTAT NET</strong></h2>
+            <h2><strong>SOLDE LOYER</strong></h2>
             <h2><strong>DEPENSES</strong></h2>   
           </div>
-         
+            <div> {{fetchDepense(itemProp.expense)}}</div>
             <div>{{getStatus(itemProp.balance)}}</div>
             <div *ngIf="amountStatus == true" class="line_two">
-              <h1 style="color: rgb(110, 156, 41);">{{itemProp.balance}} XAF</h1>
-              <h1 style="color: rgb(110, 156, 41);">{{itemProp.expense}} XAF</h1>
+              <h1 style="color: rgb(110, 156, 41);">{{itemProp.balance}} FCFA</h1>
+              <h1 style="color: rgb(110, 156, 41);" >{{itemProp.expense}} FCFA</h1>
             </div>
             <div *ngIf="amountStatus == false" class="line_two">
-              <h1 style="color: red; ">{{itemProp.balance}} XAF</h1>
-              <h1 style="color: red; margin-left: 40%;">{{itemProp.expense}} XAF</h1>
+              <h1 style="color: red; ">{{itemProp.balance}} FCFA</h1>
+              <h1 style="color: red; margin-left: 40%;">{{itemProp.expense}} FCFA</h1>
             </div>
+         
           
           <!-- <div class="row-ld">
             <div class="line_one">
@@ -59,8 +60,6 @@
   </div>
     
   <br>
-  <br>
-  <br>
     <div class="line" *ngFor="let item of more_properties">
       <div class="line-one" *ngIf="item.categ_id == id_cat">
         <div class="line-two" *ngFor="let itemProperties of item.properties">
@@ -69,30 +68,35 @@
                       <div class="content-all">  
                           <div class="row-information" >
                             <div class="line_one">
-                              <h4><strong>{{lease.name}}</strong></h4>
-                                <div class="active-cercle" style="background-color: greenyellow;" *ngIf="lease.active == true"></div>
-                                <div class="active-cercle" style="background-color: red;" *ngIf="lease.active == false"></div>
-                                <p *ngIf="lease.active == true">active</p>
-                                <p *ngIf="lease.active == false">inactive</p>
+                                <h4><strong>{{lease.name}}</strong></h4>
+                                <div class="line-active">
+                                  <div class="active-cercle" style="background-color: greenyellow;" *ngIf="lease.active == true"></div>
+                                  <div class="active-cercle" style="background-color: red;" *ngIf="lease.active == false"></div>
+                                  <p *ngIf="lease.active == true">active</p>
+                                  <p *ngIf="lease.active == false">inactive</p>
+                                </div>
                             </div>
-                            <div class="details">
-                              <p> 
-                                {{itemProperties.adress}}
-                              </p>  
-                              <p>
-                                {{lease.tenant}}
-                              </p>
-                            </div>
-                            <div class="line_two" *ngIf="balanceStatus == true">
-                              <h3>From {{lease.start}} {{lease.end}}</h3>
-                              <p  style="color: greenyellow;"><strong>{{lease.balance}}XAF</strong></p>
-                            </div>
-                            <div class="line_two" *ngIf="balanceStatus == false">
-                              <h3>From {{lease.start}} {{lease.end}}</h3>
-                              <p   style="color: red;"><strong>{{lease.balance}}XAF</strong></p>
+                            <div *ngIf="lease.active == true">
+                              <div class="details" >
+                                <p> 
+                                  {{itemProperties.adress}}
+                                </p>  
+                                <p>
+                                  {{lease.tenant}}
+                                </p>
+                              </div>
+                              <div>{{fetchStatus(lease.balance)}}</div>
+                              <div class="line_two" *ngIf="balanceStatus == true">
+                                <h3>du <strong>{{lease.start}}</strong>  <strong>{{lease.end}}</strong></h3>
+                                <p  style="color: greenyellow;"><strong>{{lease.balance}}XAF</strong></p>
+                              </div>
+                              <div class="line_two" *ngIf="balanceStatus == false">
+                                <h3>du <strong>{{lease.start}} </strong>au <strong>{{lease.end}}</strong></h3>
+                                <p  style="color: red;"><strong>{{lease.balance}}XAF</strong></p>
+                              </div>
                             </div>
                         </div>
-                        <br>
+                        <br>                                            
                       </div>
               </div>
             </div>

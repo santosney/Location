@@ -4,11 +4,12 @@
                   <ion-header [translucent]="true" >
                     <ion-toolbar>
                       <ion-title>
-                        <div class="header">
+                        <div class="header" *ngFor="let Item of properties_user">
                           <ion-buttons slot="start">
                             <ion-back-button defaultHref="locataire" ></ion-back-button>
                           </ion-buttons>
-                            <img src="../../assets/images/N.jpg" alt="" class="profil">
+                            <div *ngIf="image_url == false"><img src="../../../assets/icon/istockphoto-1300845620-612x612.jpg" alt="" class="profil"></div>
+                            <div *ngIf="image_url != false"><img [src]="profil" alt="" class="profil"></div>
                             <h2 class="title" ><strong>Mon tableau de bord</strong></h2>
                             <ion-icon name="log-out-outline" (click)="logout()"></ion-icon>
                         </div>  
@@ -21,7 +22,7 @@
                     
                     <!-- card of subservice -->
                       <div class="services">
-                        <br><br>
+                        <br>
                         <div class="row" *ngFor="let Item of properties_user"> 
                           <div class="row-one" *ngIf="Item.id == id">
                             <div>{{getStatus(Item.balance)}}</div>
@@ -52,9 +53,10 @@
                                       <h4><strong>{{lease.name}}</strong></h4>
                                     </div>
                                     <div class="line_two">
-                                      <p>date:</p>
+                                      <p *ngIf="lease.service_type == 'invoice'">date facturation: {{lease.date}}</p>
+                                      <p *ngIf="lease.service_type == 'payment'">date paiement: {{lease.date}}</p>
                                       <h3> {{lease.start}} {{lease.end}}</h3>
-                                    </div>
+                                    </div> <br>
                                     <div class="details" *ngIf="balanceStatus == true">
                                       <p>Montant: </p>
                                       <p style="color: greenyellow;"> 

@@ -2,7 +2,8 @@
   <ion-toolbar>
     <ion-title>
       <div class="header">
-          <img src="../../assets/images/N.jpg" alt="profil" class="profil">
+        <div *ngIf="image_url == false"><img src="../../../assets/icon/istockphoto-1300845620-612x612.jpg" alt="" class="profil"></div>
+        <div *ngIf="image_url != false"><img [src]="profil" alt="" class="profil"></div>            
           <h2 class="title"><strong>Mon tableau de bord</strong></h2>
           <!-- <ion-icon name="notifications-outline"></ion-icon> -->
           <ion-icon name="log-out-outline" (click)="logout()"></ion-icon>

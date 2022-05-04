@@ -9,12 +9,13 @@
           <ion-buttons slot="start">
             <ion-back-button defaultHref="home" ></ion-back-button>
           </ion-buttons>
-            <img src="../../assets/images/N.jpg" alt="" class="profil">
+          <div *ngIf="image_url == false"><img src="../../../assets/icon/istockphoto-1300845620-612x612.jpg" alt="" class="profil"></div>
+          <div *ngIf="image_url != false"><img [src]="profil" alt="" class="profil"></div>            
             <div class="row-show1" *ngFor="let item of properties_details">
-              <div class="row-show2" *ngIf="item.categ_id == category_id" >
-                <h2 class="title"><strong>{{item.category}}</strong></h2>
-              </div>   
-             </div> 
+                <div class="row-show2" *ngIf="item.categ_id == category_id" >
+                  <h2 class="title"><strong>{{item.category}}</strong></h2>
+                </div>   
+            </div> 
             <ion-icon name="notifications-outline" class="icon-notification"></ion-icon>
             <ion-icon name="mail-unread-outline"></ion-icon>
         </div>  
@@ -32,8 +33,12 @@
             <div class="row-two" *ngFor="let itemProperties of Item.properties">
               <div class="item-card" (click)="checkDetail(Item.categ_id, itemProperties.id)" >
                 <div class="content-card">
-                    <div class="img">
+                  {{getImage(itemProperties.image)}}
+                    <div class="img" *ngIf="itemProperties.image == false">
                       <img src="../../../assets/images/immeuble.jpg" alt="">
+                    </div>
+                    <div class="img" *ngIf="itemProperties.image != false">
+                      <img [src]="logo" alt="">
                     </div>
                     <div class="text-content">
                       <h2> <strong>{{itemProperties.name}}</strong> </h2>

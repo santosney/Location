@@ -83,10 +83,10 @@ export class LoginPage implements OnInit {
         if(this.validateInputs()){
           this.presentLoading().then();
           this.Auth.login(this.data_user).subscribe((data) => {
-            console.log('-----------debut', data.result);
+            console.log('-----------debut', data);
             if(data.result.status === 200){
               this.toast.presentToast(data.result.message);
-              const user = {'id': data.result.user, 'email': this.data_user.email, 'password': this.data_user.password, 'partner_type': this.data_user.partner_type};
+              const user = {'id': data.result.user, 'email': this.data_user.email, 'password': this.data_user.password, 'partner_type': this.data_user.partner_type, 'image': data.result.image};
               this.storageService.store('user-login', user).then();
               console.log('--------------parthner',this.data_user.partner_type);
               if(this.data_user.partner_type === "landlord"){

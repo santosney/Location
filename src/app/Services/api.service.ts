@@ -9,7 +9,7 @@ import { StorageService } from './storage.service';
  
 const API_STORAGE_KEY = 'specialkey';
 
-const API_URL_ = 'https://conceptimmo.advancecloud.org/';
+const API_URL_ = 'http://144.217.12.148:8069/';
 
 
 

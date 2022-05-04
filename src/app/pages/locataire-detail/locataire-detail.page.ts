@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/Services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/Services/storage.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-locataire-detail',
@@ -14,6 +15,8 @@ export class LocataireDetailPage implements OnInit {
    id : any;
   properties_user: any;
   balanceStatus = false;
+  profil: any;
+  image_url: any;
    
   constructor(
     public activateRoute: ActivatedRoute,
@@ -21,12 +24,15 @@ export class LocataireDetailPage implements OnInit {
     public api: ApiService,
     public authen: AuthService,
     private storageService: StorageService,
+    private sanitizer: DomSanitizer,
+
   ) { 
     this.id = router.getCurrentNavigation().extras.state.lease_id;
   }
 
   ngOnInit() {
     this.selectPatner();
+    this.getImage();
   }
 
   selectPatner(){
@@ -36,6 +42,7 @@ export class LocataireDetailPage implements OnInit {
   
         });
       }else if(res.partner_type === "tenant"){
+        this.image_url = res.image;
         this.storageService.get('data-tenant').then((data) =>{
           this.properties_user = data;
           console.log(this.properties_user);
@@ -62,5 +69,11 @@ export class LocataireDetailPage implements OnInit {
       this.balanceStatus = false;
       console.log('---------Faux');
     }
+  }
+
+  getImage(){
+    let item = this.image_url;
+    this.profil = 'data:image/jpg;base64,' + (this.sanitizer.bypassSecurityTrustResourceUrl(item) as any).changingThisBreaksApplicationSecurity;
+    console.log('------------this.logo   ', item, this.profil);
   }
 }

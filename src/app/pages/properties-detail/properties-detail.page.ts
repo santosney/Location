@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApiService } from 'src/app/Services/api.service';
 import { StorageService } from 'src/app/Services/storage.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-properties-detail',
@@ -11,13 +12,16 @@ import { StorageService } from 'src/app/Services/storage.service';
 })
 
 export class PropertiesDetailPage implements OnInit {
-  amountStatus: boolean = false;
-  balanceStatus: boolean = false;
+  amountStatus: any;
+  balanceStatus: any;
+  espense: any;
   uid: any;
   id_cat: any;
   id_prop: any;
  
   more_properties = [{}];
+  image_url: any;
+  profil: any;
 
   constructor(
     public api: ApiService,
@@ -25,6 +29,8 @@ export class PropertiesDetailPage implements OnInit {
     public activateService: ActivatedRoute,
     public route: Router,
     public storage: StorageService,
+    private sanitizer: DomSanitizer,
+
   ) 
   { 
     this.id_cat = this.route.getCurrentNavigation().extras.state.categ_id;
@@ -34,12 +40,13 @@ export class PropertiesDetailPage implements OnInit {
 
   ngOnInit() {
     this.SelectPropertiesDetails();
+    this.getProfil();
   }
 
   SelectPropertiesDetails(){
     this.storage.get('user-login').then((res) => {
       console.log('--------------user-id', res);
-      // this.id_cat = res.partner_type;
+      this.image_url = res.image;
       console.log("------------------propritaire", res.partner_type)
       if(res.partner_type === "landlord"){
         console.log("------------------propritaire");
@@ -59,22 +66,38 @@ export class PropertiesDetailPage implements OnInit {
     console.log("check  a facture");
   }
   getStatus(amount: number){
-    if(amount > 0){
+    if(amount > 0  && amount == 0 ){
       this.amountStatus = true;
-      console.log('-----------vrai');
+      console.log('----------- montant vrai');
     }else {
       this.amountStatus = false;
-      console.log('---------Faux');
+      console.log('---------Montant Faux');
     }
   }
 
   fetchStatus(amount: number){
-    if(amount > 0){
+    if(amount > 0 || amount == 0 ){
       this.balanceStatus = true;
-      console.log('-----------vrai');
+      console.log('-----------balance vrai');
     }else {
       this.balanceStatus = false;
-      console.log('---------Faux');
+      console.log('--------- balance Fauce');
     }
+  }
+
+  fetchDepense(amount: number){
+    if(amount > 0 || amount == 0 ){
+      this.espense = true;
+      console.log('-----------espense vrai');
+    }else {
+      this.espense = false;
+      console.log('--------- espense Fauce');
+    }
+  }
+
+  getProfil(){
+    let profil = this.image_url;
+    this.profil = 'data:image/jpg;base64,' + (this.sanitizer.bypassSecurityTrustResourceUrl(profil) as any).changingThisBreaksApplicationSecurity;
+    console.log('------------this.logo   ',this.profil);
   }
 }
