@@ -1,3 +1,29 @@
+
+@media screen and (min-width: 700px) {
+    .row{
+        display: flex;
+        // position: absolute;
+        margin-left: 800%;
+        margin-top: -20%;
+        // background-color: red;
+    }
+    .row-line > img:first-child{
+        margin-top: -60%;
+        margin-left: -10%;
+        position: absolute;
+        }
+        .row-line > img:last-child{
+            margin-top: -29%;
+            margin-left: -10%;
+            position: absolute;
+            }
+        .container{
+            position: absolute;
+            // margin-top: 210%;
+            left: 40%;
+        }
+}
+
 .row{
     display: flex;
     margin-left: 10%;
