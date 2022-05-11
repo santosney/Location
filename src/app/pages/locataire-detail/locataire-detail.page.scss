@@ -1,61 +1,154 @@
     
-@media screen and (min-width: 520px){
-    .row-information{
-        background-color: rgb(152, 10, 10);
-        // border-radius: 20px;
-        // height: auto;
-        // width: 100%;
-        // padding-left: 10%;
-        .line_one{
-            display: flex;
-           h4{
-               font-size: 0.8rem;
-               margin-left: 5%;
-           }
-           p {
-            // margin-left: 50%;
-            // top: -2%;
-            // top: 10%;
-            color: #827171;
-            // position: absolute;
-            
-        }
-        }
-        .line_two{
-            display: flex;
-            margin-top: -8%;
-            // position: absolute;
-            h3{
-                
-                font-size: 1rem;
-                color: #827171;
-                margin-left: 30%;
-            }
-            p:last-child{
-                margin-left: 20%;
-                color: rgb(49, 43, 55);
+@media screen and (min-width: 498px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                .line_one{
+                    // display: flex;
+                    margin-top: -2%;
+                    h4{
+                        margin-top: 5%;
+                    }
+                }
+                .line_two{
+                    margin-top: -2%;
+                }
             }
         }
-        .details{
-            display: flex;
-            // position: absolute;
-            p:last-child{
-                margin-left: 50%;
-                top: 10%;
-            }
-        }
-        .details > p:first-child{
-            color: #827171;
-        }
-        .details > p:last-child{
-            color: rgb(44, 44, 167);
-        }
-       
-       
     }
     
 }
 
+@media screen and (min-width: 580px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                .line_one{
+                    // display: flex;
+                    margin-top: -2%;
+                    h4{
+                        margin-top: 5%;
+                    }
+                }
+                .line_two{
+                    margin-top: -5%;
+                }
+            }
+        }
+    }
+    
+}
+@media screen and (min-width: 610px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                .line_two{   
+                    margin-top: -3%;
+                }
+                .details{
+                    margin-top: -8%;
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 737px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                // .line_two{   
+                //     margin-top: -3%;
+                // }
+                .details{
+                    margin-top: -7%;
+                }
+            }
+        }
+    }
+    
+}
+
+
+@media screen and (min-width: 849px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                // .line_two{   
+                //     margin-top: -3%;
+                // }
+                .details{
+                    margin-top: -6%;
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 991px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                // .line_two{   
+                //     margin-top: -3%;
+                // }
+                .details{
+                    margin-top: -5%;
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 350px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                // .line_two{   
+                //     margin-top: -3%;
+                // }
+                .details > p:last-child{
+                    margin-left: 40%;
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 261px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                // .line_two{   
+                //     margin-top: -3%;
+                // }
+                .details > p:last-child{
+                    margin-left: 20%;
+                }
+            }
+        }
+    }
+    
+}
+@media screen and (min-width: 258px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                // .line_two{   
+                //     margin-top: -3%;
+                // }
+                .details > p:last-child{
+                    margin-left: 15%;
+                }
+            }
+        }
+    }
+    
+}
     ion-header{
     ion-toolbar{
         border-radius: 0 0 20px 20px;

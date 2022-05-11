@@ -53,8 +53,8 @@
                                       <h4><strong>{{lease.name}}</strong></h4>
                                     </div>
                                     <div class="line_two">
-                                      <p *ngIf="lease.service_type == 'invoice'">date facturation: {{lease.date}}</p>
-                                      <p *ngIf="lease.service_type == 'payment'">date paiement: {{lease.date}}</p>
+                                      <p *ngIf="lease.service_type == 'invoice'">date facturation: <strong>{{lease.date}}</strong></p>
+                                      <p *ngIf="lease.service_type == 'payment'">date paiement: <strong>{{lease.date}}</strong></p>
                                       <h3> {{lease.start}} {{lease.end}}</h3>
                                     </div> <br>
                                     <div class="details" *ngIf="balanceStatus == true">
