@@ -1,3 +1,95 @@
+@media screen and (min-width: 516px){
+    .content-detail{
+        .row-one{
+            .line_one{
+                margin-left: 8%;
+                // position: absolute;
+            }
+        }
+    }  
+}
+
+@media screen and (min-width: 714px){
+    .content-detail{
+        .row-one{
+            .row-lg{
+                .line_two{
+                    margin-top: -4%;
+                }
+                .line_two > h2:last-child{
+                    margin-left: 15%;
+                }
+            }
+            }
+            
+        } 
+        .line{
+            .content-all{
+                .row-information{
+                    .details{
+                        margin-top: 1%;
+                    }
+                    .line_two{
+                        margin-top: -6%;
+                    }
+                }
+            }
+        }
+}
+
+@media screen and (min-width: 744px){
+    .content-detail{
+        .row-one{
+            .line_two{
+                margin-top: 5%;
+            }
+            } 
+        } 
+}   
+
+@media screen and (min-width: 929px){
+    .content-detail{
+        .row-one{
+            .row-lg{
+                .line_two{
+                    margin-top: -3%;
+                }
+                .line_two > h2:last-child{
+                    margin-left: 15%;
+                }
+            }
+            }
+            
+        } 
+} 
+
+@media screen and (min-width: 966px){
+    .content-detail{
+        .row-one{
+            .row-lg{
+                .line_two{
+                    margin-top: -3%;
+                }
+                .line_two > h2:last-child{
+                    margin-left: 15%;
+                }
+            }
+            }
+            
+        } 
+        .line{
+            .content-all{
+                .row-information{
+                    .details{
+                        margin-top: 1%;
+                    }
+                    .line_two{
+                        margin-top: -5%;
+                    }
+                }
+            }
+        }
+} 
 ion-header{
     ion-toolbar{
         border-radius: 0 0 20px 20px;

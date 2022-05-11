@@ -89,7 +89,7 @@
                               </div>
                               <div>{{fetchStatus(lease.balance)}}</div>
                               <div class="line_two" *ngIf="balanceStatus == true">
-                                <h3>du <strong>{{lease.start}}</strong>  <strong>{{lease.end}}</strong></h3>
+                                <h3>du <strong>{{lease.start}}</strong><strong>{{lease.end}}</strong></h3>
                                 <p  style="color: greenyellow;"><strong>{{lease.balance}}XAF</strong></p>
                               </div>
                               <div class="line_two" *ngIf="balanceStatus == false">
