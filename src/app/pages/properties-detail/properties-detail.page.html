@@ -27,79 +27,110 @@
 <ion-content [fullscreen]="true">
   
   <div class="content-detail" >
-    
-  <div class="row-one" *ngFor="let item of more_properties">
-    <div class="row-two" *ngIf="item.categ_id == id_cat">
-      <div class="row-tree" *ngFor="let itemProp of item.properties">
-        <div class="row-lg">
-          <div class="line_one">
-            <h2><strong>SOLDE LOYER</strong></h2>
-            <h2><strong>DEPENSES</strong></h2>   
+
+    <!-- <div class="row-tree" *ngFor="let itemProp of item.properties">
+      <div class="row-lg">
+        <div class="line_one">
+          <h2><strong>SOLDE LOYER</strong></h2>
+          <h2><strong>DEPENSES</strong></h2>   
+        </div>
+          <div> {{fetchDepense(itemProp.expense)}}</div>
+          <div>{{getStatus(itemProp.balance)}}</div>
+          <div *ngIf="amountStatus == true" class="line_two">
+            <h1 style="color: rgb(110, 156, 41);">{{itemProp.balance}} FCFA</h1>
+            <h1 style="color: rgb(110, 156, 41);" >{{itemProp.expense}} FCFA</h1>
           </div>
-            <div> {{fetchDepense(itemProp.expense)}}</div>
-            <div>{{getStatus(itemProp.balance)}}</div>
-            <div *ngIf="amountStatus == true" class="line_two">
-              <h1 style="color: rgb(110, 156, 41);">{{itemProp.balance}} FCFA</h1>
-              <h1 style="color: rgb(110, 156, 41);" >{{itemProp.expense}} FCFA</h1>
-            </div>
-            <div *ngIf="amountStatus == false" class="line_two">
-              <h1 style="color: red; ">{{itemProp.balance}} FCFA</h1>
-              <h1 style="color: red; margin-left: 40%;">{{itemProp.expense}} FCFA</h1>
-            </div>
-         
-          
-          <!-- <div class="row-ld">
-            <div class="line_one">
-              <h2><strong>NET RESULT</strong></h2>
-              <h1>{{itemProp.balance}} XAF</h1>
-            </div>
-          </div> -->
-      </div>
+          <div *ngIf="amountStatus == false" class="line_two">
+            <h1 style="color: red; ">{{itemProp.balance}} FCFA</h1>
+            <h1 style="color: red; margin-left: 40%;">{{itemProp.expense}} FCFA</h1>
+          </div>
+       
+        
+         <div class="row-ld">
+          <div class="line_one">
+            <h2><strong>NET RESULT</strong></h2>
+            <h1>{{itemProp.balance}} XAF</h1>
+          </div>
+        </div> -->
+    <!-- </div>
+    </div>
+    </div>
+    </div> --> 
+    <br>
+    <div class="row" *ngFor="let item of more_properties">
+      <div class="row_one" *ngIf="item.categ_id == id_cat">
+        <div class="row_two" *ngFor="let itemProp of item.properties">
+          <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle>
+                  <h2><strong>SOLDE LOYER</strong></h2>
+                  <h3><strong>DEPENSES</strong></h3> 
+                  <div> {{fetchDepense(itemProp.expense)}}</div>
+                  <div>{{getStatus(itemProp.balance)}}</div>
+                </ion-card-subtitle>
+              <ion-card-title>
+                <div *ngIf="amountStatus == true" class="line_two">
+                  <h1 style="color: rgb(110, 156, 41);">{{itemProp.balance}} FCFA</h1>
+                  <h1 style="color: rgb(110, 156, 41);" >{{itemProp.expense}} FCFA</h1>
+                </div>
+                <div *ngIf="amountStatus == false" class="line_two">
+                  <h1 style="color: red; ">{{itemProp.balance}} FCFA</h1>
+                  <h1 style="color: red; margin-left: 40%;">{{itemProp.expense}} FCFA</h1>
+                </div>
+              </ion-card-title> 
+            </ion-card-header>
+          </ion-card>
+        </div>
       </div>
     </div>
-  </div>
+   
     
   <br>
     <div class="line" *ngFor="let item of more_properties">
       <div class="line-one" *ngIf="item.categ_id == id_cat">
         <div class="line-two" *ngFor="let itemProperties of item.properties">
             <div class="line-tree" *ngIf="itemProperties.id == id_prop">
-              <div class="line-foor" *ngFor="let lease of itemProperties.lease_detail">             
-                      <div class="content-all">  
-                          <div class="row-information" >
-                            <div class="line_one">
-                                <h4><strong>{{lease.name}}</strong></h4>
-                                <div class="line-active">
-                                  <div class="active-cercle" style="background-color: greenyellow;" *ngIf="lease.active == true"></div>
-                                  <div class="active-cercle" style="background-color: red;" *ngIf="lease.active == false"></div>
-                                  <p *ngIf="lease.active == true">active</p>
-                                  <p *ngIf="lease.active == false">inactive</p>
-                                </div>
-                            </div>
-                            <div *ngIf="lease.active == true">
-                              <div class="details" >
-                                <p> 
-                                  {{itemProperties.adress}}
-                                </p>  
-                                <br>
-                                <p>
-                                  {{lease.tenant}}
-                                </p>
-                                <br>
-                              </div>
-                              <div>{{fetchStatus(lease.balance)}}</div>
-                              <div class="line_two" *ngIf="balanceStatus == true">
-                                <h3>du <strong>{{lease.start}}</strong><strong>{{lease.end}}</strong></h3>
-                                <p  style="color: greenyellow;"><strong>{{lease.balance}}XAF</strong></p>
-                              </div>
-                              <div class="line_two" *ngIf="balanceStatus == false">
-                                <h3>du <strong>{{lease.start}} </strong>au <strong>{{lease.end}}</strong></h3>
-                                <p  style="color: red;"><strong>{{lease.balance}}XAF</strong></p>
-                              </div>
-                            </div>
+              <div class="line-foor" *ngFor="let lease of itemProperties.lease_detail">  
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>
+                      <div class="line_one">
+                        <h4><strong>{{lease.name}}</strong></h4>
+                        <div class="line-active">
+                          <div class="active-cercle" style="background-color: greenyellow;" *ngIf="lease.active == true"></div>
+                          <div class="active-cercle" style="background-color: red;" *ngIf="lease.active == false"></div>
+                          <p *ngIf="lease.active == true">active</p>
+                          <p *ngIf="lease.active == false">inactive</p>
                         </div>
-                        <br>                                            
+                    </div>
+                    </ion-card-title>
+                    <ion-card-subtitle></ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <div *ngIf="lease.active == true">
+                      <div class="details" >
+                        <p> 
+                          {{itemProperties.adress}}
+                        </p>  
+                        <br>
+                        <h3>
+                          {{lease.tenant}}
+                        </h3>
+                        <br>
                       </div>
+                      <div>{{fetchStatus(lease.balance)}}</div>
+                      <div class="line_two" *ngIf="balanceStatus == true">
+                        <h3>du <strong>{{lease.start}}</strong><strong>{{lease.end}}</strong></h3>
+                        <p  style="color: greenyellow;"><strong>{{lease.balance}}XAF</strong></p>
+                      </div>
+                      <div class="line_two" *ngIf="balanceStatus == false">
+                        <h3>du <strong>{{lease.start}} </strong>au <strong>{{lease.end}}</strong></h3>
+                        <p  style="color: red;"><strong>{{lease.balance}}XAF</strong></p>
+                      </div>
+                    </div>
+                  </ion-card-content>
+                </ion-card>           
+                      
               </div>
             </div>
         </div>

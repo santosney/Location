@@ -32,25 +32,27 @@
           <div class="row-one" *ngIf="Item.categ_id === category_id">
             <div class="row-two" *ngFor="let itemProperties of Item.properties">
               <div class="item-card" (click)="checkDetail(Item.categ_id, itemProperties.id)" >
-                <div class="content-card">
-                  {{getImage(itemProperties.image)}}
-                    <div class="img" *ngIf="itemProperties.image == false">
-                      <img src="../../../assets/images/immeuble.jpg" alt="">
-                    </div>
-                    <div class="img" *ngIf="itemProperties.image != false">
-                      <img [src]="logo" alt="">
-                    </div>
-                    <div class="text-content">
-                      <h2> <strong>{{itemProperties.name}}</strong> </h2>
-                      <div class="location">
-                        <ion-icon name="location-outline"></ion-icon>
-                        <span>{{itemProperties.adress}} </span>
+                <ion-card>
+                  <div class="content-card">
+                    {{getImage(itemProperties.image)}}
+                      <div class="img" *ngIf="itemProperties.image == false">
+                        <img src="../../../assets/images/immeuble.jpg" alt="">
                       </div>
-                      <div class="price" *ngFor="let detail of itemProperties.detail">
-                        <span>{{detail.count}} {{detail.name}}</span><br>
+                      <div class="img" *ngIf="itemProperties.image != false">
+                        <img [src]="logo" alt="">
                       </div>
-                    </div> 
-                </div>
+                      <div class="text-content">
+                        <h2> <strong>{{itemProperties.name}}</strong> </h2>
+                        <div class="location">
+                          <ion-icon name="location-outline"></ion-icon>
+                          <span>{{itemProperties.adress}} </span>
+                        </div>
+                        <div class="price" *ngFor="let detail of itemProperties.detail">
+                          <span>{{detail.count}} {{detail.name}}</span><br>
+                        </div>
+                      </div> 
+                  </div>
+                </ion-card>
               </div>
               <br>
             </div>

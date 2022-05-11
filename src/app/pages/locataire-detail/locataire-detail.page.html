@@ -26,27 +26,30 @@
                         <div class="row" *ngFor="let Item of properties_user"> 
                           <div class="row-one" *ngIf="Item.id == id">
                             <div>{{getStatus(Item.balance)}}</div>
-                            <div class="item-card">
-                              <div class="content-card">
-                                  <div class="text-content">
-                                    <h2> <strong>{{Item.name}}</strong> </h2>
-                                    <br>
-                                    <div class="line">
-                                      <p>Balance</p>
-                                      <div class="location" *ngIf="amountStatus == true">
-                                        <span style="color: rgb(138, 216, 20);">{{Item.balance}} XAF</span>
-                                      </div>
-                                      <div class="location" *ngIf="amountStatus == false">
-                                        <span style="color: red">{{Item.balance}} XAF</span>
-                                      </div>
+                            <ion-card>
+                              <div class="item-card">
+                                <div class="content-card">
+                                    <div class="text-content">
+                                      <h2> <strong>{{Item.name}}</strong> </h2>
+                                      <br>
+                                      <div class="line">
+                                        <p>Balance</p>
+                                        <div class="location" *ngIf="amountStatus == true">
+                                          <span style="color: rgb(138, 216, 20);">{{Item.balance}} XAF</span>
+                                        </div>
+                                        <div class="location" *ngIf="amountStatus == false">
+                                          <span style="color: red">{{Item.balance}} XAF</span>
+                                        </div>
+                                      </div> 
                                     </div> 
-                                  </div> 
+                                </div>
                               </div>
-                            </div>
+                            </ion-card>
                             <br>
                             <div class="line-foor" *ngFor="let lease of Item.services"> 
                               <div> {{fetchStatus(lease.amount)}}</div>            
-                              <div class="content-all">  
+                              <ion-card>
+                                <div class="content-all">  
                                   <div class="row-information" >
                                     <div class="line_one">
                                       <p>description:</p>
@@ -72,6 +75,7 @@
                                 </div>
                                 <br>
                               </div>
+                              </ion-card>
                           </div>
                           </div>  
                         </div>

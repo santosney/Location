@@ -22,23 +22,25 @@
                         <div class="row" *ngFor="let Item of properties_user"> 
                           <div>{{getStatus(Item.balance)}}</div>
                           <br>
-                          <div class="item-card" (click)="checkId(Item.id)" >
-                              <div class="content-card">
-                                  <div class="text-content">
-                                    <h2> <strong>{{Item.name}}</strong> </h2>
-                                    <br>
-                                    <div class="line">
-                                      <p>Balance</p>
-                                    <div class="location" *ngIf="amountStatus == true">
-                                      <span style="color: rgb(138, 216, 20);">{{Item.balance}} XAF</span>
-                                    </div>
-                                    <div class="location" *ngIf="amountStatus == false">
-                                      <span style="color: red">{{Item.balance}} XAF</span>
-                                    </div>
-                                    </div>
-                                  </div> 
+                            <ion-card>
+                              <div class="item-card" (click)="checkId(Item.id)" >
+                                <div class="content-card">
+                                    <div class="text-content">
+                                      <h2> <strong>{{Item.name}}</strong> </h2>
+                                      <br>
+                                      <div class="line">
+                                        <p>Balance</p>
+                                      <div class="location" *ngIf="amountStatus == true">
+                                        <span style="color: rgb(138, 216, 20);">{{Item.balance}} XAF</span>
+                                      </div>
+                                      <div class="location" *ngIf="amountStatus == false">
+                                        <span style="color: red">{{Item.balance}} XAF</span>
+                                      </div>
+                                      </div>
+                                    </div> 
+                                </div>
                               </div>
-                            </div>
+                            </ion-card>
                             <br>
                         </div>
                       </div>

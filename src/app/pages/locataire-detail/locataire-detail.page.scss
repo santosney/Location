@@ -7,12 +7,16 @@
                     // display: flex;
                     margin-top: -2%;
                     h4{
-                        margin-top: 5%;
+                        margin-left: 25%;
                     }
                 }
                 .line_two{
-                    margin-top: -2%;
+                    margin-top: -5%;
+                    strong{
+                        margin-left: 35%;
+                    }
                 }
+                
             }
         }
     }
@@ -27,17 +31,71 @@
                     // display: flex;
                     margin-top: -2%;
                     h4{
-                        margin-top: 5%;
+                        margin-left: 35%;
                     }
                 }
                 .line_two{
                     margin-top: -5%;
+                    strong{
+                        margin-left: 45%;
+                    }
+                }
+                .details{
+                    margin-top: 1%;
+                }
+                .details > p:first-child{
+                    color: #827171;
+                }
+                .details > p:last-child{
+                   position: absolute;
+                   left: 55%;
                 }
             }
         }
     }
     
 }
+
+
+@media screen and (min-width: 567px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                .details{
+                    margin-top: -5.5%;
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 677px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                .details{
+                    margin-top: 3%;
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 564px){
+    .line-foor{
+        .content-all{
+            .row-information{
+                .details{
+                    margin-top: -6%;
+                }
+            }
+        }
+    }
+    
+}
+
 @media screen and (min-width: 610px){
     .line-foor{
         .content-all{
@@ -62,7 +120,7 @@
                 //     margin-top: -3%;
                 // }
                 .details{
-                    margin-top: -7%;
+                    margin-top: -6%;
                 }
             }
         }
@@ -228,7 +286,7 @@ ion-content{
             h2{
                 color: black;
                 font-size: 1rem;
-                margin-left: -10%;
+                // margin-left: -10%;
             }
             p{
                 // margin-left: -50%;
@@ -237,14 +295,14 @@ ion-content{
             }
             .line{
                 display: flex;
+                span{
+                    position: absolute;
+                    top: 40%;
+                    margin-left: 25%;
+                }
             }
         }
        
-       
-        span{
-            margin-top: -2%;
-            margin-left: 20%;
-        }
         
     }
     .location{
@@ -315,6 +373,7 @@ ion-content{
            h4{
                font-size: 0.8rem;
                margin-left: 5%;
+               color: black;
            }
         }
         .line_one > p {
@@ -329,6 +388,12 @@ ion-content{
                 font-size: 1rem;
                 color: #827171;
             }
+            strong{
+                color: black;
+                margin-left: 25%;
+                float: left;
+                position: absolute;
+            }
             p:last-child{
                 margin-left: 20%;
                 color: rgb(49, 43, 55);
@@ -337,15 +402,13 @@ ion-content{
         .details{
             display: flex;
             margin-top: -10%;
-            p:last-child{
-                margin-left: 50%;
-            }
         }
         .details > p:first-child{
             color: #827171;
         }
         .details > p:last-child{
-            color: rgb(44, 44, 167);
+           position: absolute;
+           left: 55%;
         }
        
     }
