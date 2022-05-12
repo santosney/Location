@@ -1,79 +1,112 @@
-@media screen and (min-width: 700px) {
+// @media screen and (min-width: 700px) {
     
+//     .row{
+//         position: absolute;
+//         text-align: center;
+//         left: 10%;
+//         img{
+            
+//             margin-top: -70%;
+//         }
+//     }
+//     .row-lg{
+//         position: absolute;
+//         top: 70%;
+//         width: 100%;
+//     }
+//     .login-form{
+//         position: absolute;
+//         margin-top: 20%;
+//         padding: 5%;
+//         border: 0px outset;
+//         border-radius:0 0 30px 30px;
+//     }
+//     a{
+//         text-decoration: none;
+//         margin-left: 50%;
+//     }
+//     .login-select{
+//         height: 60px;
+        
+//         width: 100%;
+//         background-color: #2A3088;
+//     }
+//     .content{
+//         border-right: none;
+//         border-left: none;
+//         // border-radius: 10% 10% 0 0;
+//     }
+//     ion-button{
+//         --background-color: #2A3088;
+//     }
+//     ion-progress-bar{
+//         --progress-background: #2A3088;
+//         --background: #F6F6F6;
+//     }
+//     .form-header{
+//         height: 50px;
+//         width: 100%;
+//         border: 1px groove;
+//         border-radius: 30px 30px 0 0;
+//         background-color: #2A3088;
+//         margin-top: -11%;
+//         position: absolute;
+//         display: flex;
+//         color: white;
+//         font-size: 0.8rem;
+//     }
+//     .form-header > h2:last-child{
+//         margin-left: 5%;
+//     }
+//     .form-header > h2:first-child{
+//         margin-left: 10%;
+//     }
+//     .form-header > h2:nth-child(2){
+//         margin-left: 10%;
+//     }
+//     ion-content{
+//         --overflow:hidden;
+//          overflow:auto;
+//          &::-webkit-scrollbar{
+//              display: none;
+//          }
+//     }
+// }
+@media screen and (min-width:702px) {
     .row{
         position: absolute;
-        text-align: center;
-        left: 10%;
+        left: 30%;
         img{
-            
-            margin-top: -70%;
+            margin-top: 10%;
         }
     }
-    .row-lg{
-        position: absolute;
-        top: 70%;
-        width: 100%;
-    }
     .login-form{
+        top: 15%;
         position: absolute;
-        margin-top: 20%;
-        padding: 5%;
-        border: 0px outset;
-        border-radius:0 0 30px 30px;
     }
-    a{
-        text-decoration: none;
-        margin-left: 50%;
-    }
-    .login-select{
-        height: 60px;
-        
-        width: 100%;
-        background-color: #2A3088;
-    }
+}
+
+@media screen and (min-width: 531px) {
     .content{
-        border-right: none;
-        border-left: none;
-        // border-radius: 10% 10% 0 0;
-    }
-    ion-button{
-        --background-color: #2A3088;
-    }
-    ion-progress-bar{
-        --progress-background: #2A3088;
-        --background: #F6F6F6;
-    }
-    .form-header{
-        height: 50px;
-        width: 100%;
-        border: 1px groove;
-        border-radius: 30px 30px 0 0;
-        background-color: #2A3088;
-        margin-top: -11%;
         position: absolute;
-        display: flex;
-        color: white;
-        font-size: 0.8rem;
+        width: 100%;
+       margin-top: 10%;
+       
     }
-    .form-header > h2:last-child{
-        margin-left: 5%;
+}
+
+@media screen and (min-width: 717px) {
+    .content{
+        position: absolute;
+       margin-top: -3%;
+       ion-card{
+        position: absolute;
+        margin-top: 10%;
     }
-    .form-header > h2:first-child{
-        margin-left: 10%;
-    }
-    .form-header > h2:nth-child(2){
-        margin-left: 10%;
-    }
-    ion-content{
-        --overflow:hidden;
-         overflow:auto;
-         &::-webkit-scrollbar{
-             display: none;
-         }
     }
 }
 .login-form{
-    margin-top: 20%;
+    // margin-top: 20%;
     padding: 5%;
     border: 0px outset;
     border-radius:0 0 30px 30px;
@@ -98,7 +131,9 @@ a{
     // border: 1px groove white;
     border-right: none;
     border-left: none;
-    // border-radius: 10% 10% 0 0;
+    position: absolute;
+    width: 100%;
+    top: 40%;
 }
 ion-button{
     --background-color: #2A3088;
@@ -134,4 +169,9 @@ ion-content{
      &::-webkit-scrollbar{
          display: none;
      }
+}
+
+.row-lg{
+    position: absolute;
+    top: 80%;
 }

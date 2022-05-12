@@ -15,15 +15,13 @@
    <!-- <div class="login-select"></div> -->
    <div class="content" >
      <div class="form-header">
-          <!-- <h2 ><strong >Locataire </strong></h2>
-          <h2>|</h2>
-          <h2><strong>Propriétaire </strong></h2> -->
      </div>
-      <div class="login-form" *ngIf="isLoanding == false">
+      <ion-card>
+        <div class="login-form" *ngIf="isLoanding == false">
           <form (ngSubmit)="LoginUser(f)" #f="ngForm" novalidate>
             <ion-item>
                 <ion-label position="floating">Email address</ion-label>
-                <ion-input  id="email" type="email" name="email" [(ngModel)]="data_user.email" required></ion-input>
+                <ion-input  id="email" type="email" name="email"  placeholder="ex@gmail.com" [(ngModel)]="data_user.email" required></ion-input>
             </ion-item>
             
             <ion-item>
@@ -32,11 +30,12 @@
             </ion-item>
             <br>
 
-            <ion-button  expand="block" type="submit"  >LOGIN</ion-button>
+            <ion-button  expand="block" type="submit" [disabled]="!data_user.email && !data_user.password" >LOGIN</ion-button>
             <!-- <br> -->
-            <a routerLink="reset-password">Forgot password ?</a>
+            <a routerLink="forgotpassword">Forgot password ?</a>
           </form> 
       </div>
+      </ion-card>
    </div>
 
     <br><br>

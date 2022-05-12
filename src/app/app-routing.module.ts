@@ -38,10 +38,6 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'reset-password',
-    loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
-  },
-  {
     path: 'locataire',
     loadChildren: () => import('./pages/locataire/locataire.module').then( m => m.LocatairePageModule),
     // canLoad: [AuthGuard]
@@ -54,6 +50,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/choose/choose.module').then( m => m.ChoosePageModule)
+  },
+  {
+    path: 'forgotpassword',
+    loadChildren: () => import('./pages/forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
   },
   
 ];

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.page.html',
-  styleUrls: ['./reset-password.page.scss'],
+  selector: 'app-forgotpassword',
+  templateUrl: './forgotpassword.page.html',
+  styleUrls: ['./forgotpassword.page.scss'],
 })
-export class ResetPasswordPage implements OnInit {
+export class ForgotpasswordPage implements OnInit {
   data_user = {
     email: '',
     password: '',
@@ -19,5 +19,4 @@ export class ResetPasswordPage implements OnInit {
   Reset(form: NgForm){
     console.log(form.value)
   }
-
 }
