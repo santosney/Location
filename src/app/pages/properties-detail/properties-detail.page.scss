@@ -265,6 +265,46 @@
         }
     }
  }
+
+ @media screen and (min-width: 742px){
+    .line{
+        ion-card{
+            ion-card-header{
+                ion-card-title{
+                    margin-top: 1%;
+                    line-height: 40px;
+                 .line_one{
+                     .line-active{
+                        .active-cercle{
+                            position: absolute;
+                            top: -36%;
+                        }
+                     }
+                 }
+                }
+            }
+            ion-card-content{
+                line-height: 40px;
+                .details{
+                    line-height: 40px;
+                    p{
+                        margin-top: 3%;  
+                    }
+                    h3{
+                        margin-top: 5%;  
+                    }
+                }
+                .line_two{
+                    margin-top: 20%;
+                    p{
+                        position: absolute;
+                        top: 140%;       
+                    }
+                }
+            }
+        }
+    }
+ }
  
 @media screen and (min-width: 742px){
     .line{
@@ -304,7 +344,7 @@
             }
         }
     }
- }
+ }  
 
 ion-header{
     ion-toolbar{
